@@ -3,16 +3,16 @@ import Button from './Button';
 function App() {
     return <div>
         <div>
-            <Button />
+            <Button>Click!</Button>
         </div>
         <div>
-            <Button />
+            <Button>Buy now!</Button>
         </div>
         <div>
-            <Button />
+            <Button>More info!</Button>
         </div>
         <div>
-            <Button />
+            <Button>Remove!</Button>
         </div>
     </div>
 

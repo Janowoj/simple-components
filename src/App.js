@@ -3,16 +3,19 @@ import Button from './Button';
 function App() {
     return <div>
         <div>
-            <Button>Click!</Button>
+            <Button success rounded outline>Click!</Button>
         </div>
         <div>
-            <Button>Buy now!</Button>
+            <Button secondary rounded>Buy now!</Button>
         </div>
         <div>
-            <Button>More info!</Button>
+            <Button secondary outline>More info!</Button>
         </div>
         <div>
-            <Button>Remove!</Button>
+            <Button danger outline>Remove!</Button>
+        </div>
+        <div>
+            <Button warning >Hide ads!</Button>
         </div>
     </div>
 

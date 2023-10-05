@@ -3,7 +3,7 @@ import Button from './Button';
 function App() {
     return <div>
         <div>
-            <Button success rounded outline>Click!</Button>
+            <Button success primary rounded outline>Click!</Button>
         </div>
         <div>
             <Button secondary rounded>Buy now!</Button>

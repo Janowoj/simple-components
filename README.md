@@ -57,6 +57,89 @@ This can cause a conflict!
 
 <Button primary>Click!</Button>
 
+// We have to add a little bit of a check in the Button components (only one of the props can be true).
+For this purpose we will use the PROP-TYPES LIBRARY.
+
+// prop-types library:
+
+It is JS library to validate the props that get passed into your component.
+
+If someone passes down a prop that is not valid (number instead of boolean), we will get a warning in the console.
+
+Used to be very popular. Now TypeScript is more popular.
+
+// Install:
+
+https://www.npmjs.com/package/prop-types
+
+npm install prop-types
+
+e.g.:
+
+// Card.js:
+
+import PropTypes from 'prop-types';
+
+function Card({ title, content, showImage }) {
+    return <div>
+        <h2>{title}</h2>
+        <p>{paragraph}</p>
+        {showImage && <img src='https://picsum.photos/200/300' />}
+    </div>
+}
+
+Card.propTypes = {
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string,
+    showImage: PropTypes.bool
+}
+
+export default Card;
+
+// isRequired: if we don't pass down the prop, we will get a warning in the console.
+
+// uf there is no isRequired, like in the case of content, this prop is optional, but it has to be a string.
+
+// Validating the props, if there is only one of them that can be true:
+
+customProp: function(props, propName, componentName) {
+    if (!/matchme/.test(props[propName])) {
+      return new Error(
+        'Invalid prop `' + propName + '` supplied to' +
+        ' `' + componentName + '`. Validation failed.'
+      );
+    }
+  },
+
+  // Writing CUSTOM VALIDATORS:
+
+  It does not matter what key we assign that checker to.
+  We can assign our custom validator to any key we want.
+
+  For this purpose we will create Button.propTypes object e.g.:
+
+  Button.proptypes = {
+      checkVariationValue(props) {
+        return new Error ('Invalid prop value')
+      }
+  }
+
+  To check the value prop is true we will use Number(true) -> 1
+  Number(!!undefined) -> 0
+
+  // When writing:
+
+   <div>
+            <Button success primary rounded outline>Click!</Button>
+        </div>
+
+// We will get a warning in the console!
+
+Prop types does not break anything, it just gives us a little print up of a warning.
+
+
+
+
 
 
 

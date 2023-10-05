@@ -137,6 +137,21 @@ customProp: function(props, propName, componentName) {
 
 Prop types does not break anything, it just gives us a little print up of a warning.
 
+## Tailwind CSS
+
+It is different from Bootstrap, Bulma etc. 
+
+Instead of giving many classNames to the elements, we will use only some different classNames that have individual singular styling rules attached to them.
+
+Each of these different selectors is going give us almost always a single styling rule.
+
+Why do we need it?
+
+// - Components get harder to read.
+// - We have to write a lot of classNames.
+// - Some normal CSS features don't work well with Tailwind CSS.
+
+
 
 
 

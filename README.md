@@ -283,6 +283,41 @@ const classes = twMerge(
       'text-red-500': outline && danger
     })
   );
+
+  # React Icons:
+
+  https://react-icons.github.io/react-icons/
+
+  // This is a library of libraries of icons made by different people, e.g.:
+  Bootstrap Icons, Font Awesome, Material Design Icons, etc.
+
+  // Each library has consistent styling.
+
+  // Some of these different sets of icons are sometimes not designed to be used with React. Thanks to this library we can use them with React.
+
+// Install:
+
+npm install react-icons
+
+// Import:
+
+in App.js e.g.:
+
+import { IconName } from 'react-icons/fa';
+import { IconName } from "react-icons/go";
+
+etc.
+
+# Adding CSS to the Button component:
+
+We will add some CSS to the Button component (Tailwind CSS is not enough).
+
+button > svg {
+    margin-right: 5px;
+}
+
+
+
  
 
 

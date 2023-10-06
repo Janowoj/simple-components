@@ -376,6 +376,39 @@ function App() {
     </div>
 }
 
+// 3. Now we have a small bug in the Button component:
+
+When adding the prop to the Button component in the App.js we will overwrite it by className in the Button component:
+
+function App() {
+
+    return <div>
+        <div>
+            <Button primary rounded className='mb-5'>
+                <GoBell />
+                Click!
+            </Button>
+        </div>
+    </div>
+}
+
+...and nothing will happen when we click the button.
+
+// 4. We will fix this bug:
+
+function Button({ 
+    children, 
+    className,
+    ...rest 
+    }) {
+    const classes = twMerge(
+        className(rest.className, 'flex items-center px-3 py-1.5 border', {
+            'border-blue-500 bg-blue-500 text-white': primary,
+        })
+    );
+    return <button className={className} {...rest}>{children}</button>;
+}
+
 
 
 

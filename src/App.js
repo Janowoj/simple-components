@@ -2,20 +2,23 @@ import { GoBell, GoCheckCircle, GoDownload } from "react-icons/go";
 import Button from './Button';
 
 function App() {
+    const handleClick = () => {
+        alert('Hello!');
+    };
     return <div>
         <div>
-            <Button primary rounded>
+            <Button primary rounded onClick={handleClick}>
                 <GoBell />
                 Click!
             </Button>
         </div>
         <div>
-            <Button secondary rounded>
+            <Button secondary rounded onMouseLeave={handleClick}>
                 <GoCheckCircle />
                 Buy now!</Button>
         </div>
         <div>
-            <Button success rounded outline>More info!</Button>
+            <Button success rounded outline onMouseEnter={handleClick}>More info!</Button>
         </div>
         <div>
             <Button danger rounded>Remove!</Button>

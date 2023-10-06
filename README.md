@@ -316,6 +316,69 @@ button > svg {
     margin-right: 5px;
 }
 
+# Sharing our Button component with the other developers:
+
+// 1. We will receive feedback: 
+' How can I add a click handler to the <Button/> ???'
+
+// 2. We will add a click handler to the Button component:
+
+Prop onClick has to be added to the Button component, but this special Button component renders plain HTML button element.
+We have to pass somehow the onClick prop to the plain HTML button element (not the best solution):
+
+App.js:
+
+function App() {
+    return <div>
+        <div>
+            <Button onClick={() => console.log('Clicked!')}>Click here!</Button>
+        </div>
+    </div>
+}
+
+Button.js:
+
+function Button({ children, onClick }) {
+    return <button onClick={onClick}>{children}</button>;
+}
+
+export default Button;
+
+// 3. We will immadiately receive another feedback:
+
+'How can I add a mouseover event handler to the <Button/> ???'
+
+// 4. Again, we will add a mouseover event handler to the Button component.
+
+// 5. We will receive another feedback, and another, and another...
+
+# Sharing our Button component with the other developers - SOLUTION:
+
+// 1. We will get the all remaining properties, collect them all up and assign them to the variable called 'rest'.
+
+function Button({ 
+    children, 
+    ...rest 
+    }) {
+    return <button {...rest}>{children}</button>;
+}
+
+// 2. Now we can add any prop we want to the Button component in the App.js file:
+
+function App() {
+    return <div>
+        <div>
+            <Button onClick={() => console.log('Clicked!')} onMouseOver={() => console.log('Mouse over!')}>Click here!</Button>
+        </div>
+        <div>
+        <Button onMouseLeave={hancleClick}>More info</Button>
+        </div>
+    </div>
+}
+
+
+
+
 
 
  

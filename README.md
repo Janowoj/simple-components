@@ -153,7 +153,7 @@ Why do we need it?
 
 But className soup is going to FORCE us to write smaller and more reusable components!!!
 
-// Installing Tailwind CSS:
+# Installing Tailwind CSS:
 
 https://tailwindcss.com/docs/guides/create-react-app
 
@@ -189,6 +189,86 @@ npm run start
 - Tailwind releases new version very often, so we have to update it in the future.
 - All the styling we are going to use is unlikely to change
 - Setup directions might change by the time
+
+# Using Tailwind CSS:
+
+// 1. Decide on a new styling rule we want to add to our component.
+// 2. Go to tailwindcss.com/docs and find the styling rule we want to use.
+// 3. Smash Control+K as hard as possible (joke).
+// 4. Search for the styling rule we want to use.
+// 5. Add appropriate className to your element.
+
+# Review on Styling:
+
+// 1. Tailwind is going to remove all of default styling from the elements in our browser.
+// 2. We have to add all of the styling back in by using Tailwind CSS classes.
+
+# classnames library:
+
+// This is optional library;
+// It is used to conditionally add classNames to the elements.
+// Library is called 'classnames'. though prop is called 'className'.
+
+# Installing classnames library:
+
+npmjs.com/package/classnames
+
+npm install classnames
+
+# Using classnames library:
+
+// 1.
+
+If i pass in a string e.g.:
+bg-blue-500, px-3, py-1.5
+classnames library will return a string:
+'bg-blue-500 px-3 py-1.5'
+
+// 2. We can do something like this:
+
+let bg-color = undefined;
+
+if(primary) {
+    bg-color = 'bg-blue-500';
+}
+
+classNames=(bg-color, 'px-3', 'py-1.5');
+
+// 3. or this:
+
+const primary = true;
+const warning = false;
+
+classNames = ({
+    'bg-blue-500': primary,
+    'bg-yellow-500': warning,
+})
+
+// 4. import propTypes from 'prop-types' REMOVED from the Button.js file.
+
+// 5. import className from "classnames";
+ADDED to the Button.js file.
+
+// 6. When using dashes in the classNames we have to wrap them in QUOTES!!!
+
+To check this, we write this:
+
+const finalClassName = className('px-5', {
+    'bg-red-500': true,
+    'text-yellow-500': true,
+})
+
+console.log(finalClassName);
+
+
+
+
+
+
+
+
+
+
 
 
 

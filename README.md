@@ -473,6 +473,20 @@ src/pages/CheckoutPage.js
 
 // Having a bunch of components in the same folder is not a problem.
 
+// Refactoring components:
+
+// 1. We will create a new folder called 'components' in the src folder.
+// 2. We will move the Button.js file to the components folder.
+// 3. We will create a new folder called 'pages' in the src folder.
+// 4. We will change the directory in the App.js file:
+
+import Button from './components/Button' 
+(it can be done automatically by the IDE).
+// 5. We will create a new folder called 'ButtonPage' in the pages folder.
+// 6. We will change the import statement in the ButtonPage.js file:
+
+import Button from '../components/Button'
+
 
 
 

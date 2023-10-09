@@ -647,9 +647,44 @@ Does any component besides Accordion reasonably neeed to know which item is expa
 
 // We can define the handler in the Accordion component (it should be usually defined in the same component as state it modifies).
 
+# Conditionally rendering content:
+## REACT does not print booleans, nulls and undefineds.
 
+|| gives us the first truthy value.
 
+'hi' || 'there'
+'hi'
+false || 'there'
+'there'
+0 || 'there'
+'there'
+0 || true
+true
+50 || null
+50
 
+&& gives us the first falsy value or the last truthy value.
+
+'hi' && 'there'
+'there'
+false && 'there'
+false
+0 && 'there'
+0
+0 && true
+0
+50 && null
+null
+
+## Accordion component:
+
+const content = isExpanded && <div>{item.content}</div>; 
+
+// If isExpanded is true, we will show the content of the item.
+
+// If isExpanded is false, we will show nothing.
+
+## Changing the value of the state we can see changing the content of the item!
 
 
 

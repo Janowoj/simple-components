@@ -431,9 +431,49 @@ function App() {
 // 1. 'Component' - reusable piece of code that shows a handful of elements.
 e.g.:
 Button, Card, Modal, etc.
-// 2. 'Page' - component not inteded to be reused.
+// 2. 'Page' - component not inteded to be reused, shows entire page to the user.
 e.g.:
 CheckoutPage, ProductPage, LoginPage, etc.
+
+# Grouping components by feature (not for beginners):
+
+src/auth/LoginPage.js
+src/auth/LoginPage.css
+src/auth/LoginForm.js
+src/auth/SignupForm.js
+src/auth/SignupForm.css
+
+src/cart/CartPage.js
+src/cart/CartPage.css
+src/cart/CartItem.js
+src/cart/CheckoutButton.js
+src/cart/CheckoutButton.css
+
+# Grouping components by type (easier for beginners):
+
+src/components/Button.js
+src/components/SearcBar.js
+src/components/Dropdown.js
+src/components/Input.js
+
+src/pages/LoginPage.js
+src/pages/CartPage.js
+src/pages/CheckoutPage.js
+
+# Grouping components by type and feature (hybrid):
+
+src/components/forms/Input.js
+src/components/forms/SearchBar.js
+src/components/products/ProductShow.js
+src/components/products/ProductList.js
+
+src/pages/LoginPage.js
+src/pages/CartPage.js
+src/pages/CheckoutPage.js
+
+// Having a bunch of components in the same folder is not a problem.
+
+
 
 
 

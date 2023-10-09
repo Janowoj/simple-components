@@ -409,7 +409,31 @@ function Button({
     return <button className={className} {...rest}>{children}</button>;
 }
 
+// 5. This is very COMMON:
 
+function App() {
+
+    return <div>
+        <div>
+            <Button
+                primary
+                rounded
+                className='mb-3'>
+                <GoBell />
+                Click!
+            </Button>
+        </div>
+        <div>
+}
+
+# React Components:
+
+// 1. 'Component' - reusable piece of code that shows a handful of elements.
+e.g.:
+Button, Card, Modal, etc.
+// 2. 'Page' - component not inteded to be reused.
+e.g.:
+CheckoutPage, ProductPage, LoginPage, etc.
 
 
 

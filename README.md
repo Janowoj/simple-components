@@ -509,6 +509,148 @@ Names of the properties are not important, but the order is important.
 It can be Label or Heading, but it has to be the first property in the object.
 The second property can be named Content.
 
+# State design process:
+
+// 1. Designing process takes a good amount of time.
+
+// 2. Here we are going to design process for the accordion component.
+
+// 3. This process works really well when designing more complex components.
+
+## What state and handlers are there?
+
+// 1. List out what a users will do and changes they will see while using your app,
+// 2. Categorize each step as 'state' or 'event handler',
+// 3. Group common steps. Remove duplicates. 
+Rewrrite description of each step.
+
+## What name and type?
+
+// 4. Look at the mockup. Remove or simplify parts that are not changing.
+// 5. Replace remaining elements with text descriptions
+// 6. Repeat #4 and #5 with a different variations
+// 7. Imagine you have to write a function that returns the text of step #5 and #6. In addition to your component props, what other arguments would you need?
+
+## Where is it defined? 
+
+// 8. Decide where each event handler and state will be defined.
+
+### Answers:
+
+I. First Phase:
+
+# 1. User interactions:
+
+// A. Click on a second section label
+// B. First section is collapsed
+// C. Second section content is shown
+// D. Click on a third section label
+// E. Second section is collapsed
+// F. Third section content is shown
+
+# 2. 
+
+// We need STATE when user sees something on the screen change.
+(A AND D)
+
+// We need EVENT HANDLER when user does something.
+(B, C, E, F)
+
+# 3. 
+
+// Similar in nature or duplicates:
+
+// We can group A and D together.
+// We can group B, C, E and F together.
+
+// Now we can remove duplicates: D, C, E and F.
+
+// We can rewrite the description of each step:
+
+// new A: Clicked on a section header
+// new B: One section is expanded, all others are collapsed
+
+II. Second Phase:
+
+# 4. 
+
+// The best type of state is a number, boolean or a string (they are simple, objects and arrays are more complicated).
+
+// This is time to remove parts that are not changing, in this case we can remove the titles and content of the sections.
+
+# 5. 
+
+// Now we replace remaining elements with text descriptions as simple as possible:
+
+// Expanded!
+// Collapsed! 
+
+// This is text desrition of what is going on.
+
+# 6. 
+
+// We can repeat #4 and #5 with a different variations:
+
+// Collapsed!
+// Collapsed!
+// Expanded!
+
+# 7. (MOST CHALLENGING!!!)
+
+// We are going to write a function that returns the text of step #5 and #6.
+
+// In addition to your component props, what other arguments would you need?
+
+e.g.:
+
+const result = myFunction(props, /* ??? */);
+
+console.log(result);
+
+// WE can pass a NUMBER (index of the section) to the function.
+
+e.g.:
+
+function myFunction (items, expandedItems) {
+    return items.map((item, index) => {
+        if(index === expandedItems) {
+            return 'Expanded!';
+        } else {
+            return 'Collapsed!';
+        }
+    });
+    }
+
+// Now we can call a piece of STATE 'expandedItems'.
+
+# 8. 
+
+// Decide WHERE each event handler and state will be defined.
+
+// In this case we can:
+
+// 1. define the state in the App.js file and pass it down to the Accordion component.
+
+// 2. define the state in the Accordion component.
+
+// Both of them would work 100% fine.
+
+// Better Question: 
+Does any component besides Accordion reasonably neeed to know which item is expanded?
+
+// If the answer is 'NO', we can define the state in the Accordion component.
+// If the answer is 'YES', we can define the state in the App.js file.
+
+## In our application there is no need to have siblings components, so we can define the state in the Accordion component.
+
+# The handler will be called handleClick. 
+
+// We can define the handler in the Accordion component (it should be usually defined in the same component as state it modifies).
+
+
+
+
+
 
 
 

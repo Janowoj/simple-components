@@ -487,6 +487,30 @@ import Button from './components/Button'
 
 import Button from '../components/Button'
 
+# App.js is a BACKUP file!
+We copied everything from App.js to the ButtonPage.js file.
+
+# Accordion component:
+
+How to create an accordion component?
+
+// 1. We can use hard-coded data in the App.js file.
+
+This is not a good solution, because we will have to change the App.js file every time we want to add a new accordion.
+
+// 2. Create one single accordion component, which we will use multiple times in the App.js file.
+
+Our App component is going to show our instance of the accordion component. When it shows our component it is going to pass down some props, that includes property called 'items' (array of objects).
+
+## Items array:
+
+'Items' is an array of objects, which has some information about section to display.
+Names of the properties are not important, but the order is important.
+It can be Label or Heading, but it has to be the first property in the object.
+The second property can be named Content.
+
+
+
 
 
 

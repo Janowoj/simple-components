@@ -759,7 +759,18 @@ const renderedItems = items.map((item, index) => {
 
 // If we don't want to clutter our mapping function, we can create eventhandler function outside of the mapping function:
 
+# Icons:
 
+// To render icons from the react-icons library we will declare a variable called icon.
+// Inside span element we will use ternary operator to render the icon.
+
+// Import the icon:
+
+import { IconName } from "react-icons/go";
+
+# Tailwind CSS:
+
+// Adding classnames to the different elements.
 
 
 

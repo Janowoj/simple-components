@@ -757,6 +757,10 @@ const renderedItems = items.map((item, index) => {
 
 // If e have multiple lines of code with more event handlers, this is hard to read.
 
+// If we don't want to clutter our mapping function, we can create eventhandler function outside of the mapping function:
+
+
+
 
 
  

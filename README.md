@@ -684,12 +684,78 @@ const content = isExpanded && <div>{item.content}</div>;
 
 // If isExpanded is false, we will show nothing.
 
-## Changing the value of the state we can see changing the content of the item!
+## Changing the value of the state we can see changing the content of the item! (expanding or collapsing the item).
+
+# Event handler:
+
+// This time we will define the handler on the element inside the mapping function.
+
+// When user clicks on the section header e.g. index 0, we will call the handler setExpandedIndex(0).
+
+## Longhand version:
+
+function ProductShow() {
+    const handleClick =() => {
+        console.log('hi there')
+    };
+
+    return <div onClick={handleClick}></div>
+}
+
+// It is good to use this version, because we can use the handler in multiple places.
+// Also it is easier for developers to read the code.
+
+## Shorthand version:
+
+function ProductShow() {
+    return <div onClick= {() => console.log('hi there')} ></div>
+    }
+
+// It is also good (though without the name of the handler).
+
+const renderedItems = items.map((item, index) => {
+        const isExpanded = index === expandedIndex;
 
 
 
+        return (
+            <div key={item.id}>
+                <div onClick={() => {
+                    setExpandedIndex(index);
+                }}>{item.label}</div>
+                {isExpanded && <div>{item.content}</div>}
+            </div>
+        )
+    });
 
+### We create 3 totally different event handlers above!
 
+## Shorthand version 2.0:
+
+const renderedItems = items.map((item, index) => {
+        const isExpanded = index === expandedIndex;
+
+        return (
+            <div key={item.id}>
+                <div 
+                onClick={() => {
+                    console.log('hi there');
+                    setExpandedIndex(index);
+                    }
+                    >
+                    {item.label}
+                    </div>
+                {isExpanded && <div>{item.content}</div>}
+                }
+            </div>
+        )
+    });
+
+### This is quite good, but harder to read.
+
+# What is a caveat?
+
+// If e have multiple lines of code with more event handlers, this is hard to read.
 
 
 

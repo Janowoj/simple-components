@@ -772,10 +772,100 @@ import { IconName } from "react-icons/go";
 
 // Adding classnames to the different elements.
 
+# Delay State Updates:
 
+// In the console 
 
+<div class = "flex justify-between p-3 bg-gray-50 border-b items-center cursor-pointer">
+
+is equal to: &0.
+
+// This is a reference to that element in the DOM.
+
+// We can find the BUG simulating two clicks on the same element (opened section):
+
+$0.click(); // first click
+$0.click(); // second click
+
+// After second click we should see section open, but it is closed.
+
+# What is not happening?
+
+// starting with expandedIndex === 0 (first section is opened)
+
+1. User clicks on the first section header (index 0),
+2. Event handler is executed
+3. Because expandedIndex === index, we call 'setExpandedIndex(-1)';
+4. Component rerenders, first section is collapsed
+5. User clickes first header again
+6. Event handler is executed
+7. Because expandedIndex !== index, we call 'setExpandedIndex(0)';
+
+// component rerenders, first section is expanded
+
+# What is actually happening?
+
+// starting with expandedIndex === 0 (first section is opened)
+
+1. User clicks on the first section header (index 0),
+2. Event handler is executed
+3. Because expandedIndex === index, we call 'setExpandedIndex(-1)';
+4. REACT: 'I will update the state later'
+5. User clickes first header again (index 0),
+6. Event handler is executed
+7. expandedIndex has not been yet updated!
+8. REACT: 'I will update the state later'
+
+time passes...
+
+9. REACT: 'I will update the state now'
+expanndedIndex === -1,
+10. Component rerenders, first section is collapsed
+
+# Fixing the bug:
+
+## Option 1: Get React to process the state updates immediately.
+## Option 2: Get access to the most up to date value of 'expandedIndex' inside the event handler.
+
+# Option 1 (not recommended):
+
+// Understanding React: React does updates in batches. It allows us to make some updates. REact will process all of them at the same time.
+
+// If we tell React to start processing these updates instantly, our application is going to be a little bit slower.
+
+## Option 2 (recommended):
+
+// React knows,that we are going to need the most up to date value of 'expandedIndex' inside the event handler. Here we need 'expandedIndex' to be -1.
+
+// Simple version:
+
+const handleClick = () => {
+        setExpandedIndex(1);
+    };
+
+// Functional version:
+
+Use if new value depends on the previous value!!!
+
+const [counter, setCounter] = useState(0);
+
+const handleClick = () => {
+    setCounter(currentCounter => {
+        if (currentCounter > 1) {
+            return 2;
+        } else {    
+            return currentCounter + 1;
+        }
+    });
+}
+
+# Attention:
+
+ // Technically this is only an issue if state updates really quickly.
+
+ // Practically we can use simple version of the handler.
  
-
+  
 
 
 

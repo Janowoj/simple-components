@@ -833,7 +833,7 @@ expanndedIndex === -1,
 
 // If we tell React to start processing these updates instantly, our application is going to be a little bit slower.
 
-## Option 2 (recommended):
+## Option 2 (recommended): FUNCTIONAL STATE UPDATE:
 
 // React knows,that we are going to need the most up to date value of 'expandedIndex' inside the event handler. Here we need 'expandedIndex' to be -1.
 
@@ -859,14 +859,33 @@ const handleClick = () => {
     });
 }
 
+// After checking in the console:
+$0.click(); // first click
+$0.click(); // second click
+
+// We can see that the section is opened after the second click.
+
 # Attention:
 
  // Technically this is only an issue if state updates really quickly.
 
  // Practically we can use simple version of the handler.
- 
-  
 
+# Dropdown component:
+
+## Designing props:
+
+// Choose what type of props we want to use as options (string, number, boolean, object, array, function, etc.).
+
+// Good option is to use an ARRAY OF OBJECTS.
+
+// We will use an array of objects with two properties: LABEL and VALUE.
+
+E.G.:
+
+if (selected.value === 'sweet') {
+    makeFood();
+}
 
 
 

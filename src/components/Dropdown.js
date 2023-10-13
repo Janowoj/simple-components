@@ -9,11 +9,11 @@ function Dropdown({ options }) {
         setIsOpen(!isOpen);
     }
 
-    const handleOptionClick = (event) => {
+    const handleOptionClick = (option) => {
         // CLOSE DROPDOWN
         setIsOpen(false);
-        // DISPLAY WHAT DID THE USER CLICK ON?
-        console.log(event)
+        // DISPLAY WHAT DID THE USER CLICK ON? instead of event object we can pass the option object
+        console.log(option)
     }
 
     const renderedOptions = options.map((option) => {

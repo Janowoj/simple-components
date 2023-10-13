@@ -26,4 +26,4 @@ function AccordionPage() {
     return <Accordion items={items} />;
 }
 
-export default App;
+export default AccordionPage;

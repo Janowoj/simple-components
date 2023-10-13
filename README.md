@@ -887,6 +887,163 @@ if (selected.value === 'sweet') {
     makeFood();
 }
 
+// label is displayed to the user, value is used in the code (has special meaning).
+
+# Creating AccordionPage.js file:
+
+// We will copy everything from App.js to the AccordionPage.js file (remember to change import/export statements).
+
+# Removing the code from the App.js file.
+
+# Creating DropdownPage.js file
+
+# Events and State design process for the Dropdown component:
+
+# 1.
+ First Phase: what user will do and what changes they will see:
+
+// User klicks on the dropdown header, what opens the dropdown menu.
+
+// User clicks on the different option, what closes the dropdown menu and shows the selected option.
+
+// so...
+
+1. click the dropdown header
+2. list of options is shown
+3. click an option
+4. list of options is hidden
+5. selected option is shown
+
+// that is it!
+
+# 2.
+ Categories each step as 'state' or 'event handler':
+
+// We need STATE when user sees something on the screen change.
+(2, 4, 5)
+
+// We need EVENT HANDLER when user does something.
+(1, 3)
+
+# 3.
+ Group common steps. Remove duplicates. Rewrite description of each step:
+
+ // We have two different event handlers.
+
+ Click the cropdown header
+ Click an option
+
+ // We can group two state changes together (2 and 4):
+
+ Menu opens and closes
+
+ // We have also standing alone state change (5). 
+
+Item clicked appears in the header
+
+// ==============================
+
+# 4. 
+
+Look at the mockup. Remove or simplify parts that are not changing.
+
+// Removing the content of the sections and arrow icons.
+
+# 5.
+
+Replace remaining elements with text descriptions.
+
+// Menu closed, no option selected
+// Menu open, no option selected
+// Menu open, option selected
+
+# 6.
+
+Repeat #4 and #5 with a different variations (not needed in this case).
+
+# 7.
+
+Imagine you have to write a function that returns the text of step #5 and #6. In addition to your component props, what other arguments would you need?
+
+//  Focusing on the state changes:
+
+// State nr 1:
+
+e.g.:
+
+const opts = [
+    {label: 'The color red', value: 'red'},
+    {label: 'The color green', value: 'green'},
+    {label: 'A shade of blue', value: 'blue'}
+];
+
+const myFunction = (options, isOpen = {
+    if(isOpen) {
+        return 'Menu open';
+    } else {
+        return 'Menu closed';
+    }
+});
+
+myFunction(opts, false); // "Menu closed, no option selected"
+
+myFunction(opts, true); // "Menu open, no option selected"
+
+...so the STATE will be named 'isOpen', TYPE will be boolean. 
+
+// ==============================
+
+// State nr 2:
+
+// We need to know which option is selected.
+
+const opts = [
+    {label: 'The color red', value: 'red'},
+    {label: 'The color green', value: 'green'},
+    {label: 'A shade of blue', value: 'blue'}
+];
+ const myFunction = (options, selected) => {
+    if(!selected) {
+        return 'Menu closed, no option selected';
+    } else {
+        return selected.label;
+    }
+
+    return 'Menu open, no option selected';
+};
+
+myFunction(opts, null); // "Menu closed, no option selected"
+
+myFunction(opts, opts[0]); // "Menu open, option selected"
+
+...so the STATE will be named 'selected', TYPE will be object or null.
+
+// ==============================
+
+// Handler nr 1 (click an option):
+
+// We need to know which option was clicked.
+
+...so the handler will be named 'handleSelect', TYPE will be function.
+
+// Handler nr 2 (click the dropdown header):
+
+// We need to know if the menu is open or closed.
+
+...so the handler will be named 'handleClick', TYPE will be function.
+
+# 8.
+
+Decide where each event handler and state will be defined.
+
+// Does any other component need to know about the state?
+
+// In some cases some other component besides the dropdown might need to know about the selected piece of state!
+
+...so in the PARENT component we will define the state and pass it down to the dropdown component.
+
+
+
 
 
 

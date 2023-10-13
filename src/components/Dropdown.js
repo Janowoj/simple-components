@@ -1,4 +1,4 @@
-function Dropdown() {
+function Dropdown({ options }) {
     return <div>Dropdown...</div>
 }
 

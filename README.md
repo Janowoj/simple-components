@@ -1044,6 +1044,44 @@ Decide where each event handler and state will be defined.
 
 ...so the state isOpen we will define in the dropdown component (ANY OTHER COMPONENT DON'T CARE ABOUT IT).
 
+# Controlled vs Uncontrolled components:
+
+// Controlled component: a component where the value of an input is controlled by the state of the component.
+
+// Uncontrolled component: a component where the value of an input is controlled by the DOM.
+
+// In the dropdown component we will use the controlled component.
+
+# 1.
+
+Create a new piece of state;
+
+# 2.
+
+Create an event handler to watch for the 'onChange' event;
+
+# 3.
+
+When the 'onChange' event occurs, get the value of the input;
+
+# 4.
+
+Take that value from the input and update the state with it.
+
+# 5.
+
+Pass the value of the state to the input as a value prop.
+
+// WHY do we need to do this?
+
+1. We can manage the text in the input using the state system
+2. Need tp know what the search q
+3. Need to know what the search query is
+4. Input managed in this style are 'controlled inputs'
+
+Managing text input through the state system:
+
+
 
 
 

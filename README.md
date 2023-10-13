@@ -1040,7 +1040,9 @@ Decide where each event handler and state will be defined.
 
 // In some cases some other component besides the dropdown might need to know about the selected piece of state!
 
-...so in the PARENT component we will define the state and pass it down to the dropdown component.
+...so the state SELECTED we will define in the PARENT component and pass it down to the dropdown component.
+
+...so the state isOpen we will define in the dropdown component (ANY OTHER COMPONENT DON'T CARE ABOUT IT).
 
 
 

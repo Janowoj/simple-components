@@ -1112,6 +1112,18 @@ return <div>
     </div>
 
 
+#  Community Convention with Props Names:
+
+// 'Form controls' are components that allow users to enter information, e.g.:
+// input, textarea, select, checkbox, radio, dropdown, etc.
+
+// Convention:
+
+// 1. If a component is a form control, it should have a prop called 'value'.
+// 2. If a component is a form control, it should have a prop called 'onChange'.
+
+// In this case we have props 'onSelect' and 'selection' passed down to the Dropdown component (child component). 
+// We will change the name of the prop 'selection' to 'value'.
 
 
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Dropdown({ options, selection, onSelect }) {
+function Dropdown({ options, value, onChange }) {
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -14,7 +14,7 @@ function Dropdown({ options, selection, onSelect }) {
         // CLOSE DROPDOWN
         setIsOpen(false);
         // DISPLAY WHAT DID THE USER CLICK ON? instead of event object we can pass the option object
-        onSelect(option);
+        onChange(option);
     }
 
     const renderedOptions = options.map((option) => {
@@ -26,7 +26,7 @@ function Dropdown({ options, selection, onSelect }) {
     });
 
     return <div>
-        <div onClick={handleClick}>{selection?.label || 'Select...'}</div>
+        <div onClick={handleClick}>{value?.label || 'Select...'}</div>
         {isOpen && <div>{renderedOptions}</div>}
     </div>
 }

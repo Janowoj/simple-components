@@ -1082,7 +1082,34 @@ Pass the value of the state to the input as a value prop.
 Managing text input through the state system:
 
 
+# How to write code below simpler?
 
+let content = 'Select...';
+    if (selection) {
+        content = selection.label;
+    }
+
+// if an array property is set to null or undefined, when typing array.length we will get an error.
+
+...so we can use the fancy syntax:
+
+array?.length
+
+// This is going to check if the array is defined or not.
+// If it is not defined, then this entire expression is going evaluate to undefined 
+// and NOT going to get an ERROR.
+
+We can use this syntax with boolean:
+
+colors?.length || 100
+
+// On the left side we will receive undefined, on the right side we will receive 100 (FIRST TRUTHY VALUE).
+
+return <div>
+        <div onClick={handleClick}>
+        {selection?.label || 'Select...'}</div>
+        {isOpen && <div>{renderedOptions}</div>}
+    </div>
 
 
 

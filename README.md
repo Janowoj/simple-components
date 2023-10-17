@@ -1125,8 +1125,23 @@ return <div>
 // In this case we have props 'onSelect' and 'selection' passed down to the Dropdown component (child component). 
 // We will change the name of the prop 'selection' to 'value'.
 
+# Why do we need to do this?
+
+// It is hard to remember all the different props names for the different components.
 
 
+# Tailwind CSS for the Dropdown component:
+
+It os OK to have duplicated classNames in the Dropdown component, but we can make it simpler by using new REUSABLE COMPONENT called 'twMerge'.
+
+We created elements which look like PANELS.
+
+It is the the same as in the Button component, but we will use different classNames.
+
+1. Create a new component that shows a handful of JSX elements.
+2. Make sure the component accepts + uses the 'children' prop.
+3. Allow extra classNames to be passed down + merge to the component (className library).
+4. Take extra props and pass them to the root element of the component (all of the additional props and assign them to the div as {...rest}).
 
 
 

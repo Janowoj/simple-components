@@ -1143,6 +1143,65 @@ It is the the same as in the Button component, but we will use different classNa
 3. Allow extra classNames to be passed down + merge to the component (className library).
 4. Take extra props and pass them to the root element of the component (all of the additional props and assign them to the div as {...rest}).
 
+# Implementing the Panel component:
+
+// 1. Create a new file called Panel.js in the components folder.
+
+// 2. Creating a functional component:
+
+import classNames from 'classnames';
+
+function Panel({ children, className, ...rest }) {
+    const finalClassNames = classNames(
+        'p-3 bg-gray-50 border-b',
+        className
+    );
+     return <div {...rest} className={finalClassNames}>{children}</div>
+}
+
+classNames is a prop passed down from the parent component (there are many classes in the className).
+
+// 3. Exporting the component:
+
+export default Panel;
+
+// 4. Importing the component in the Dropdown component:
+
+import Panel from './Panel';
+
+// 5. Using the component in the Dropdown component:
+
+In return statement instead <div> we will use <Panel>:
+
+Now we can delete all the classNames from the Dropdown component (leaving only the classNames from the Panel component).
+
+# What is Panel component doing?
+
+Whenever we show Panel component, we create a div with some classNames.  
+We can then receive some additional class names and merge them with the classNames we already have.
+We can get some children and show them inside the div.
+We can take any additional props and pass them to the div.
+
+It makes very little thing, but makes CONSISTENT and REUSABLE STYLING accross our application.
+
+# Duplicating Dropdown component in App.js:
+
+After duplicating the Dropdown component in App.js we can see that both of them are displaying the same value.
+
+They have one piece of state, which is shared between them.
+
+This is not a bug, this is a FEATURE.
+
+But when opening first dropdown, the second one is also opened.
+
+This is a BUG!
+
+We need to add some fumctionality to the Dropdown component to make it work properly.
+We have to watch for 'click' event OUTSIDE of the Dropdown component ('isOpen' set to false).
+
+# Watching for 'clicking' on the element outside the component:
+
+
 
 
 

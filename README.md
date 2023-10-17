@@ -1201,6 +1201,24 @@ We have to watch for 'click' event OUTSIDE of the Dropdown component ('isOpen' s
 
 # Watching for 'clicking' on the element outside the component:
 
+// we can do it in plain JS:
+1. document-wide click handlers
+
+const handleClick = (event) => {
+    console.log(event.target);
+};
+
+document.addEventListenet('click', handleClick);
+
+2. event capturing/bubbling
+3. checking element inclusion
+
+// we can do it in React:
+4. using useEffect hook
+5. using useRef hook
+
+
+
 
 
 

@@ -11,8 +11,10 @@ function Dropdown({ options, value, onChange }) {
         setIsOpen(!isOpen);
     }
 
-
+    window.timeTwo = performance.now();
     const handleOptionClick = (option) => {
+        window.timeOne = performance.now();
+
         // CLOSE DROPDOWN
         setIsOpen(false);
         // DISPLAY WHAT DID THE USER CLICK ON? instead of event object we can pass the option object

@@ -1211,11 +1211,63 @@ const handleClick = (event) => {
 document.addEventListenet('click', handleClick);
 
 2. event capturing/bubbling
+
+When an event occurs, browser wants to find event handlers to call.
+
+Order in which this seatch occurs is divided into three phases:
+
+I. Capturing phase (browser goes to the most parent of clicked element and goes down to the clicked element):
+
+document.addEventListener('click', handleClick, true);
+
+// usually we don't use this phase
+
+II. Target phase (browser calls the event handler on the clicked element)
+
+III. Bubbling phase (browser goes up to the most parent of clicked element, if there is another event handler, it will be called)
+
 3. checking element inclusion
 
 // we can do it in React:
 4. using useEffect hook
 5. using useRef hook
+
+# Why we need here Capture Phase handler?
+
+// We need to know if the user clicked on the element outside of the Dropdown component.
+
+const dropdown = document.querySelector('.w-48');
+
+const handleClick = (event) => {
+    if (dropdown.contains(event.target)) {
+        console.log('click inside');
+    } else {
+        console.log('click outside');
+    }
+};
+
+document.addEventListener('click', handleClick, true);
+
+# Why toggling one little argument ('true' to 'false') makes a difference?
+
+// If we change the argument from 'true' to 'false', we will see that when clicking inside the Dropdown component, the console will show 'click outside'.
+// this is the same as we would not pass any third argument to the addEventListener() method.
+
+# Expectation when Capture === false (not really):
+
+- User clicks on an option
+- No capture phase handlers, so browser goes to the target phase
+- Browser sees event handler on the option, so it calls it
+- We update state to close the dropdown, but React does not rerender yet... (this is normal React behavior)
+
+...time passes...
+
+- Click event handler we manually added to the document is called
+- We check if the click was inside or outside the dropdown
+
+...time passes...
+
+- React finally rerenders the dropdown
 
 
 

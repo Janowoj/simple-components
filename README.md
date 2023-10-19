@@ -1354,6 +1354,36 @@ timeThree - timeOne
 // Now we get on the console the clicked element, e.g.:
 <div class='hover: gb: sky-100 rounded p-1>Green</div>
 
+2. useRef hook
+
+// We need to tell our listener to stop listening for events when the component is removed from the DOM.
+
+// Now our event listener is not going to be cleaned upautomatically.
+
+// Handler function is going to be called every single time when user clicks on the document, event our DROPDOWN component is no longer visible on the screen.
+
+// We can add cleanUp function inside useEffect to remove our component from the screen.
+// We don't need to call the cleanUp function, we just return it.
+
+# Element references
+
+// We have to be sure that every single dropdown component has a recerence to the HTML that it created
+
+// That is why we need useRef!
+
+# useRef hook
+
+- it allows a component to get a reference to a DOM element that it creates,
+
+- 95% of the time used with DOM elements, but can hold a reference to any value
+
+# useRef Implementation
+
+1. Create a ref at the top of your component by calling 'useRef'
+2. Assign the ref to a JSX element as a prop calld 'ref'
+3. Access that DOM element eith 'ref.current'
+
+
 
 
 

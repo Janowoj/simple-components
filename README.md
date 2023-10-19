@@ -1269,6 +1269,91 @@ document.addEventListener('click', handleClick, true);
 
 - React finally rerenders the dropdown
 
+// THIS NOT REALLY HAPPENS!!!
+
+# The real process of Capturing the click event (Capture === false):
+
+- User clicks on an option
+- Browser starts looking for event handler
+- Browser sees click event handler on the 'option' DIV, place by React
+- Browser calls the event handler in our component
+- We update state to close the dropdown, but React does not rerender yet... (this is normal React behavior)
+
+...time passes...
+
+It just takes longer for manual event handlers to be called.
+
+Couple of milliseconds later finally, when we call the custom event handler, the dropdown is already closed.
+
+When we check to see if the clicked element is inside or outside the dropdown, the clicked element DOESN'T EXIST ANYMORE!
+
+# Why setting third argument to 'true' makes a difference?
+
+By setting third argument to 'true' we are telling the browser to call the event handler during the CAPTURING PHASE.
+
+During the capture phase we are going to first look for the body element and look for click event handlers on there.
+
+So we ABSOLUTELY need 'TRUE' as a third argument, application will not work properly without it.
+
+# Benchmarking:
+
+performance.now()
+
+ window.timeTwo = performance.now();
+    const handleOptionClick = (option) => {
+        window.timeOne = performance.now();
+
+        // CLOSE DROPDOWN
+        setIsOpen(false);
+        // DISPLAY WHAT DID THE USER CLICK ON? instead of event object we can pass the option object
+        onChange(option);
+    }
+
+
+const dropdown = document.querySelector('.w-48');
+
+const handleClick = (event) => {
+    window.timeThree = performance.now();
+    if (dropdown.contains(event.target)) {
+        console.log('click inside');
+    } else {
+        console.log('click outside');
+    }
+};
+
+document.addEventListener('click', handleClick, false);
+
+timeTwo - timeOne
+1.600000023841858
+timeThree - timeOne
+3
+
+// We can see that the timeTwo - timeOne is much shorter than timeThree - timeOne.
+
+// What is why we need to use 'true' as a third argument in the addEventListener() method.
+
+# Using 2 different hooks to get JS working inside our React project.
+
+1. useEffect hook 
+
+// WE are always guaranteed that the useEffect hook is going to run after the first render of our component.
+
+// Depending on what th second argument is, it might run again.
+
+// In this case we are going to use the useEffect hook just ONE TIME.
+
+  useEffect(() => {
+        const handler = (event) => {
+            console.log(event.target);
+        };
+
+        document.addEventListener('click', handler, true);
+    }, []);
+
+
+// Now we get on the console the clicked element, e.g.:
+<div class='hover: gb: sky-100 rounded p-1>Green</div>
+
 
 
 

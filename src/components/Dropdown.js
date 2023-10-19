@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { GoChevronDown } from "react-icons/go";
 import Panel from "./Panel";
 
@@ -6,12 +6,20 @@ function Dropdown({ options, value, onChange }) {
 
     const [isOpen, setIsOpen] = useState(false);
 
+    useEffect(() => {
+        const handler = (event) => {
+            console.log(event.target);
+        };
+
+        document.addEventListener('click', handler, true);
+    }, []);
+
     const handleClick = () => {
         // setIsOpen((currentIsOpen) => !currentIsOpen); // practically it is impossible to click on this item faster than the rendering time
         setIsOpen(!isOpen);
     }
 
-    window.timeTwo = performance.now();
+    // window.timeTwo = performance.now();
     const handleOptionClick = (option) => {
         window.timeOne = performance.now();
 

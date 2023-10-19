@@ -1384,6 +1384,34 @@ timeThree - timeOne
 3. Access that DOM element eith 'ref.current'
 
 
+#  Browser Navigation
+
+In proffessional projects we will use Libraries to handle navigation.
+
+Here we will use the browser navigation made from scratch.
+
+ 1. In plain HTML when user types url address and presses enter, browser makes GET request to the server.
+
+ Many servers implement a feature called 'server-side ROUTING'. 
+ A rout is a little snippet of code that runs on the server and decides what to send back to the browser.
+ It takes a look at the method and the path of the request and decides what to send back.
+
+ 2. In this case we are going to assume that we have a server that has a router, that has two routing rules indside of it:
+ - request to: myapp.com/ -> send back landingpage.html
+ - request to: myapp.com/dasboard -> send back dashboard.html
+
+ 3. user can be preserved with some links on the page, e.g.:
+    <a href='/dashboard'>Dashboard</a>
+
+    When user clicks on the link, browser makes GET request to the server.
+
+    Server sees the request to the dashboard and sends back dashboard.html (totally different HTML file).
+
+THIS IS VERY IMPORTANT!!!
+
+When the browse loads a new HTML file, it throws away all of the JS VARIABLES AND CODE existing on the page.
+
+
 
 
 

@@ -1509,8 +1509,24 @@ window.history.pushState({}, '', '/dropdown');
 
 // We can see that the address bar is updated, but the page is not refreshed.
 
+// It also makes the back/forward button work.
 
+### How do we detect when the user clicks on the link or presses back/forward button?
 
+1. User clicking on the link:
+
+// Creating a React component called Link.js:
+
+function Link ({to}) {
+    const handleClick = (event) => {
+        event.preventDefault();
+        
+console.log('User navigatin to:' to);
+    };
+return <a onClick={handleClick} href={to}>Click me!</a>
+}
+
+// When calling event.preventDefault(), we are telling the browser to not do the default behavior.
 
 
 

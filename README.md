@@ -1467,7 +1467,33 @@ So we should define the state inside of the parent component or a context object
 
 # new component: SideBar.js
 
+This is navigation bar on the left side of the screen.
+Shows links to different pages.
 
+# App.js file:
+
+Shows one of the components: ButtonPage, AccordionPage or DropdownPage (depending on the path).
+
+### Cheking the path:
+
+// We can check the path in the console:
+
+1. Open the consolse in the browser, the Network tab, DOC tab, click on the Name localhost, Response tab, we can see the HTML file.
+2. This the same HTML file as in the Public directory index.html file.
+3. When typing localhost:3000/something in the address bar, we can see the same HTML file (CreateReactApp IS HANDLING THE ROUTING FOR US!!!).
+
+// How do we look at the path in the React application?
+
+e.g.: 
+localhost:3000/dropdown -> path: /dropdown
+react-app.org/acccordion -> path: /accordion
+react-app.org/images/preview -> path: /images/preview
+localhost:3000 -> path: /
+localhost:3000/ -> path: /
+
+...so in the console we type:
+
+window.location.pathname
 
 
 

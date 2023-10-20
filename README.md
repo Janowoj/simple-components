@@ -1495,6 +1495,19 @@ localhost:3000/ -> path: /
 
 window.location.pathname
 
+### How can we update the address bar?
+
+Option 1: 
+
+window.location = 'http://localhost:3000/dropdown';
+
+// Causes a full page refresh (we don't want that).
+
+Option 2:
+
+window.history.pushState({}, '', '/dropdown');
+
+// We can see that the address bar is updated, but the page is not refreshed.
 
 
 

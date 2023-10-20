@@ -1411,9 +1411,50 @@ THIS IS VERY IMPORTANT!!!
 
 When the browse loads a new HTML file, it throws away all of the JS VARIABLES AND CODE existing on the page.
 
+e.g.:
+
+// index.html
+
+const myVariable = 10;
+
+user clicks on the link
+
+// dashboard.html
+
+// myVariable is not defined!
+
+# This behavior doesn't really matters for traditional HTML-focused applications.
+
+# This behavior is a problem for React applications.
+
+What will happen if we have a React application and we have a link to the dashboard?
+
+1. User is going to type in our address to the address bar and press enter (browser makes GET request to the server, server sends back index.html). 
+2. That HTML file has a script tag that says the browser to load up the bundle.js file (browser makes second GET request to the server, server sends back bundle.js file).
+3. Then the React ap would start up and chances are we would have a component that would reach out to the server any fetch some data with dome API endpoint.
+4. User makes a third GET request to the server, finally we can see a list of images on the screen.
+
+# If our React app followed traditional navigation ideas, it would take much more requests to show the images on the screen.
+# Whereas with traditional HTML-focused applications, we would have to make only one request to the server.
+
+There is alternative to traditional navigation.
 
 
+# How Navigation works with React?
 
+// Two scenarios:
+
+1. User types our address in the address bar or user id at different page and clicks on the link.
+- always send back the index.html file
+- the HTML has a script tag inside of it that says the browser to load up the bundle.js file (make the second GET request to the server, server sends back bundle.js file)
+our React app starts up
+- when app loads up, React looks at the URL and decide what to show on the screen
+
+2.  User clicks on the link inside our app or presses the back/forward button.
+- stop the browser's default page-switching behavior
+- figure out where the user was trying to navigate to
+- update the content on the screen o trick the user into thinking they swapped pages
+- update address bar to trick the user into thinking they swapped pages
 
 
 

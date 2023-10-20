@@ -1448,13 +1448,25 @@ There is alternative to traditional navigation.
 - always send back the index.html file
 - the HTML has a script tag inside of it that says the browser to load up the bundle.js file (make the second GET request to the server, server sends back bundle.js file)
 our React app starts up
-- when app loads up, React looks at the URL and decide what to show on the screen
+- React applies a series of routing rules to the URL and decides what to show on the screen
+
+If user is trying to go to /images, we will show the component ImageList.
 
 2.  User clicks on the link inside our app or presses the back/forward button.
 - stop the browser's default page-switching behavior
 - figure out where the user was trying to navigate to
 - update the content on the screen o trick the user into thinking they swapped pages
 - update address bar to trick the user into thinking they swapped pages
+
+The advantage of this approach is that we don't have to make any additional requests to the server.
+If the user wants to go back to the previous page, we can show them the previous page without making any additional requests to the server.
+
+It is important not to define the state inside of the component, because when the component is removed from the screen, the state is going to be lost.
+
+So we should define the state inside of the parent component or a context object.
+
+# new component: SideBar.js
+
 
 
 

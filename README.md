@@ -1521,12 +1521,51 @@ function Link ({to}) {
     const handleClick = (event) => {
         event.preventDefault();
         
-console.log('User navigatin to:' to);
+console.log('User navigating to:' to);
     };
 return <a onClick={handleClick} href={to}>Click me!</a>
 }
 
 // When calling event.preventDefault(), we are telling the browser to not do the default behavior.
+
+// Browser will not do a total page refresh.
+
+2. User clicking on a back or forward button:
+
+// Windows emits a 'popstate' event, if current url was added by 'pushState'.
+
+e.g. when typing 
+localhost:3000
+
+and then
+
+localhost:3000/accordion,
+
+clicking back and forward we receive totally refreshed page.
+This is not what we want!
+
+but...
+...when typing in console:
+
+window.history.pushState({}, '', '/a1');
+window.history.pushState({}, '', '/a2');
+
+// After going back to the page a1 we don't get a pege refresh.
+
+// After going forward to the page a2 we don't get a pege refresh.
+
+// Only when we go to localhost3000 we get page refresh.
+
+### To detect user clicks forward of backward we use 'popstate'.
+
+window.addEventListener ('popstate', () => console.log('I am at' window.location.pathname));
+undefined.
+
+Going back I will see:
+console.log "I am at /a1"
+
+Going forward I will see:
+console.log " I am at /a2"
 
 
 

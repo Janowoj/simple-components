@@ -1590,6 +1590,13 @@ export default NavigationContext;
 
 // The only reason we are really updating that piece of state is to cause our component to re-render.
 
+# Programmatic navigation
 
+// Programmatic navigation occurs e.g. on banking software (security sensitive). After log in or authenticate with it, if the user do not interact with the application for some period of time, an applicaion may try to sign out the user automatically.
+
+// This type of application not only sign the user out, but also automatically navigate to some other address.
+
+1. Call 'pushState' to update address bar
+2. Update 'currentPath'
 
 

@@ -1567,6 +1567,28 @@ console.log "I am at /a1"
 Going forward I will see:
 console.log " I am at /a2"
 
+# Creating a context
+
+In the src file creating navigation.js.
+
+const NavigationContext = createContext();
+
+const NavigationProvider = ({ children }) => {
+
+    const [currentPath, setCurrentPath] = useState(window.location.pathname);
+
+    return <NavigationContext.Provider value={{}}>
+        {currentPath}
+        {children}
+    </NavigationContext.Provider>
+}
+
+export { NavigationProvider };
+export default NavigationContext;
+
+// In App.js the App component wrapped with NavigationProvider
+
+// The only reason we are really updating that piece of state is to cause our component to re-render.
 
 
 

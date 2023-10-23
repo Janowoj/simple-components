@@ -1641,3 +1641,4 @@ if(event.metaKey || event.ctrlKey) {
     return;
 }
 
+# DropdownPage shown in the root route:

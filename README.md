@@ -1650,3 +1650,12 @@ http://localhost:3000/
 // Whenever we show Link component, we are going to allow other developers to give us className props.
 
 // Adding className prop to the Link component in list of classes.
+
+// Adding activeClassName prop to the anchor element in Link component, if particular link to field is equal to the current path stored inside out context object.
+
+# Navigation Libaries:
+
+- React-Router
+- Reach-Router
+- React-Location
+- Wouter

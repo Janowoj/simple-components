@@ -1599,4 +1599,14 @@ export default NavigationContext;
 1. Call 'pushState' to update address bar
 2. Update 'currentPath'
 
+// When we do a programmatic navigation, we need to make sure that we update the address
+bar and also UPDATE the CURRENT PATH ,which is going to cause our component to re-render.
 
+# Link component implementation:
+
+// The goal of the Link component is to overwrite normal navigation behavior.
+
+// We use this comonent any time a user is trying to go to a path inside of our application.
+
+// If a user is trying to navigate to another website (precisely we watn to show a link that will take user to another website), we don't want to use this component.
+// Then we want to use a normal anchor tag.

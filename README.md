@@ -1659,3 +1659,13 @@ http://localhost:3000/
 - Reach-Router
 - React-Location
 - Wouter
+
+## Modal component:
+
+// Immediate tasks:
+
+1. Create a new component called Modal.js
+2. Make a 'ModalPage' component that shows the Modal component
+3. Add route to App.js to show the ModalPage component when user navigates to /modal
+4. Add a link to the SideBar component to navigate to /modal
+

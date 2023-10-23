@@ -1669,3 +1669,20 @@ http://localhost:3000/
 3. Add route to App.js to show the ModalPage component when user navigates to /modal
 4. Add a link to the SideBar component to navigate to /modal
 
+## Designing Modal component:
+
+1. Should the button be displayed inside or outside the modal?
+
+// First option: button inside the modal IS NOT GOOD, because we want to open modal WITHOUT a user clicking on the button.
+
+Maybe we want modal to be opened when user has visited the page for e.g. 10 seconds.
+
+// Second option: button outside the modal IS GOOD, because we can open modal WITHOUT a user clicking on the button.
+
+// Parent owns the state to keep track of wheather modal should be displayed or not.
+
+## ModalPage component:
+
+// ModalPage owns the state to keep track of wheather modal should be displayed or not and
+// ModalPage has a button, that whenever user clicks on it, we are going to set this piece of state to true and show the modal.
+

@@ -1642,3 +1642,11 @@ if(event.metaKey || event.ctrlKey) {
 }
 
 # DropdownPage shown in the root route:
+
+http://localhost:3000/
+
+# Styling
+
+// Whenever we show Link component, we are going to allow other developers to give us className props.
+
+// Adding className prop to the Link component in list of classes.

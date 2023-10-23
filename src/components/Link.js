@@ -1,11 +1,16 @@
 import classNames from "classnames";
 import useNavigation from "../hooks/use-navigation";
+import { act } from "react-dom/test-utils";
 
-function Link({ to, children }) {
+function Link({ to, children, className, activeClassName }) {
 
-    const { navigate } = useNavigation();
+    const { navigate, currentPath } = useNavigation();
 
-    const classes = classNames('text-blue-500 hover:underline');
+    const classes = classNames(
+        'text-blue-500',
+        className,
+        currentPath === to && activeClassName
+    );
 
     const handleClick = (event) => {
         // console.log(event);

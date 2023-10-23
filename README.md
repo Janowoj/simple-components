@@ -1624,3 +1624,20 @@ In Route:
 if (currentPath === path) {
     return children;
 }
+
+# Handling Control and Command Keys:
+
+// If user clicks on the link and holds down the control key, we want to open the link in a new tab.
+
+// Open Link component, find an anchor tag and add href prop.
+
+// To check what does it mean add console.log(event) to the handleClick function. Press ctrl and click on the link. Open the console and check the event object. 
+There is a property called 'ctrlKey' (true if ctrl key is pressed on Windows).
+Therer is a property called 'metaKey' (true if command key is pressed on Mac).
+
+// So if user CLICKS on the link and holds down the CONTROL key, we want to open the link in a new tab (we allow the browser to do the default behavior).
+
+if(event.metaKey || event.ctrlKey) {
+    return;
+}
+

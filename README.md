@@ -1610,3 +1610,17 @@ bar and also UPDATE the CURRENT PATH ,which is going to cause our component to r
 
 // If a user is trying to navigate to another website (precisely we watn to show a link that will take user to another website), we don't want to use this component.
 // Then we want to use a normal anchor tag.
+
+# Route component implementation:
+
+// If user is at the /dropdown path right now, we want to show whatever is provided as the children prop.
+
+// Props are: 
+path: '/dropdown'
+children: DropdownPage
+
+In Route:
+
+if (currentPath === path) {
+    return children;
+}

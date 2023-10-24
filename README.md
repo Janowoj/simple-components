@@ -1695,3 +1695,31 @@ Maybe we want modal to be opened when user has visited the page for e.g. 10 seco
 3. The modal needs to be centered on the screen.
 
 // Adding classNames to the Modal component.
+
+function Modal() {
+    return <div>
+        <div className="absolute inset-0 bg-gray-300 opacity-80"></div>
+        <div className='absolute inset-40 p-10 bg-white'>
+            I am a modal!
+        </div>
+    </div>;
+}
+
+export default Modal;
+
+
+// Tailwind ClassName: absolute,
+// CSS: position: absolute,
+// TailWwind ClassName: inset-0 
+// CSS: top: 0, right: 0, bottom: 0, left: 0
+
+// By dafault the position of the element is static.
+
+// Position: absolute puts the element:
+- at the top left corner
+- of the closest parent element that has a position of relative, absolute or fixed (not static)
+
+// className: inset-0 sets the top, right, bottom and left to 0:
+- if the element is positioned absolutely
+- the element will expand to fill the entire screen
+- on the closest parent element that has a position of relative, absolute or fixed (not static)

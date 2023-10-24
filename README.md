@@ -1686,3 +1686,12 @@ Maybe we want modal to be opened when user has visited the page for e.g. 10 seco
 // ModalPage owns the state to keep track of wheather modal should be displayed or not and
 // ModalPage has a button, that whenever user clicks on it, we are going to set this piece of state to true and show the modal.
 
+## Displaying THE MODAL:
+
+1. The background of the modal needs to cover the entire screen.
+
+2. The modal needs to cover up all existing content on the screen.
+
+3. The modal needs to be centered on the screen.
+
+// Adding classNames to the Modal component.

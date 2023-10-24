@@ -1723,3 +1723,45 @@ export default Modal;
 - if the element is positioned absolutely
 - the element will expand to fill the entire screen
 - on the closest parent element that has a position of relative, absolute or fixed (not static)
+
+// If element has no parent with non-static position, it will be placed at the top left corner of the entire HTML document and it is going to expand to fill up the entire screen.
+
+## Our modal works correctly only because there is no 'positioned' parent element. 
+
+// React project use 'positioned' parent element, so we need to improve our modal.
+
+// That is why we will use Portal.
+
+## Portal
+
+// We put the Modal's HTML down at the bottom of the HTML document, but we can still show it anywhere on the screen.
+
+// It's parent is body element. It will never have positioned parent element!
+
+## Creating Portal component:
+
+// Inside Modal component aw are no longer going to directly return plain JSX elements.
+
+// Instead we are going to return a function call to ReactDOM.createPortal().
+
+// Additionally we can go to index.html  file, create a new div with class name of 'modal-continer' and whatever we put in as a first element it is going to be turned into HTML and placed into that element.
+
+function Modal() {
+    return ReactDOM.createPortal(
+        <div>
+            <div className="absolute inset-0 bg-gray-300 opacity-80"></div>
+            <div className='absolute inset-40 p-10 bg-white'>
+                I am a modal!</div>
+        </div>,
+        document.querySelector('.modal-container')
+    )
+}
+
+export default Modal;
+
+// If we open the console our modal is not being displayed.
+// Div class name 'modal-container' is empty...
+
+// ... but after clicking on the button, the modal is rendered and we ee the div class name 'modal-container' is not empty anymore, there is HTML  prodiced by the Modal component.
+
+// now while adding to the ModalPage the className='relative', component Modal is displayed correctly.

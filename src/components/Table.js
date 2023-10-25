@@ -1,6 +1,6 @@
-function Table() {
+function Table({ data }) {
     return <div>
-        I am a Table!
+        {data.length}
     </div>
 }
 

@@ -1792,4 +1792,25 @@ return () => {
 
 // WE used here a cleanup function, because we want to make sure that we remove the style from the body element whenever the modal is removed from the DOM.
 
-// Removed position absolute from the Modal component and added fixed position.s
+// Removed position absolute from the Modal component and added fixed position.
+
+### Table component:
+
+1. Create a new component called Table.js
+2. Make a 'TablePage' component that shows the Table component
+3. Add route to App.js to show the TablePage component when user navigates to /table
+4. Add a link to the SideBar component to navigate to /table
+
+### Designing Table component:
+
+// We want to be able to show a table with some data inside of it.
+
+// We want to be able to customize the table using props in parent component, e.g. TablePage as array of objects called fruits:
+
+[
+    {name: 'apple', color: 'bg-red-300', price: '$1'},
+    {name: 'banana', color: 'bg-yellow-300', price: '$2'},
+    {name: 'grape', color: 'bg-purple-300', price: '$3'},
+]
+
+// We want to pass down the props to the Table component and show the table with the data.

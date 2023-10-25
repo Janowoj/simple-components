@@ -1765,3 +1765,8 @@ export default Modal;
 // ... but after clicking on the button, the modal is rendered and we ee the div class name 'modal-container' is not empty anymore, there is HTML  prodiced by the Modal component.
 
 // now while adding to the ModalPage the className='relative', component Modal is displayed correctly.
+
+## Customizing the Modal component:
+
+// We want to be able to customize the content of the modal using props:
+children and action.

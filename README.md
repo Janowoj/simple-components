@@ -1770,3 +1770,26 @@ export default Modal;
 
 // We want to be able to customize the content of the modal using props:
 children and action.
+
+## Fixing the bug if paragraph is too long inside the modal:
+
+// We need to make sure that whenever the modal is displayed we somehow PREVENT the user from scrolling the page.
+
+// Whenever the modal is shown we add an additional style to th body element (overflow: hidden), but whenever the modal is hidden we remove that style (overflow: auto).
+
+// We can do it with useEffect hook.
+
+// When our modal is first displayed, we can find the body element and add a style to it. 
+when our modal component is about to be removed from the DOM, we can find the body element and remove that style.
+
+useEffect(() => {
+    document.body.classList.add('overflow-hidden');
+
+return () => {
+        document.body.classList.remove('overflow-hidden');
+    }
+}, []);
+
+// WE used here a cleanup function, because we want to make sure that we remove the style from the body element whenever the modal is removed from the DOM.
+
+// Removed position absolute from the Modal component and added fixed position.s

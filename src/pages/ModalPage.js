@@ -9,11 +9,14 @@ function ModalPage() {
     const handleClick = () => {
         setShowModal(true);
     }
+    const handleClose = () => {
+        setShowModal(false);
+    }
 
     return (
         <div className="relative">
             <Button onClick={handleClick} primary>Open Modal</Button>
-            {showModal && <Modal />}
+            {showModal && <Modal onClose={handleClose} />}
         </div>
     )
 }

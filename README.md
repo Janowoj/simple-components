@@ -1831,3 +1831,13 @@ return () => {
 // 6. Cells can be calculated using multiple properties
 // 7. Cells can display arbitrary data
 
+### Table component implementation:
+
+// Creating the second array of objects called 'config' with properties.
+
+// Every object that we have inside the config array is going to have a separate column.
+
+// Thewe objects are ging to have several different properties, e.g. label.
+
+// Config array will be placed inside the Table component.
+

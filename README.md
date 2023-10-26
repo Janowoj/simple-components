@@ -1839,5 +1839,11 @@ return () => {
 
 // Thewe objects are ging to have several different properties, e.g. label.
 
-// Config array will be placed inside the Table component.
+// Config array will be placed inside the TablePage component.
+
+// Now we don't need to change the Table component, we can just change the config array in the TablePage component.
+
+// As a property we can add 'render', which is a function that will be called with the current row object and it will return the value that we want to show inside the cell.
+
+
 

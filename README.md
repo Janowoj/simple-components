@@ -1814,3 +1814,20 @@ return () => {
 ]
 
 // We want to pass down the props to the Table component and show the table with the data.
+
+### Table component implementation:
+
+// Inside Table component in the return state we will write a JSX that will show the table with the data.
+
+### Making table component reusable:
+
+// Requirements:
+
+// 1. Variable number of rows
+// 2. Variable number of columns
+// 3. # (number of) columns doesn't have to match # of properties in object. We want to dictate which properties we want to show in the table.
+// 4. Some columns are sortable
+// 5. Sortable columns can sort different kinds of values (strings, numbers, dates)
+// 6. Cells can be calculated using multiple properties
+// 7. Cells can display arbitrary data
+

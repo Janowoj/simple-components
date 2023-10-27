@@ -1845,5 +1845,19 @@ return () => {
 
 // As a property we can add 'render', which is a function that will be called with the current row object and it will return the value that we want to show inside the cell.
 
+#### Sorting the table:
+
+// Planning:
+
+1. understand how the table is supposed to work
+- sorting one column means that we are going to change the order of the rows
+- there is a cycle of 3 states, when the user clicks: ascending, descending, none
+- when the user clicks on e.g. score header one or two time and then clicks on the other header cell, we are going to immediately sort an ascending order on that other column
+2. review sorting in JS
+3. look at options for adding sort to the table
+4. remember, the Table component is supposed to be REUSABLE!
+
+
+
 
 

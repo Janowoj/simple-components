@@ -22,6 +22,10 @@ function TablePage() {
             label: 'Score',
             render: (fruit) => fruit.score,
         },
+        {
+            label: 'Score squared',
+            render: (fruit) => fruit.score ** 2,
+        }
     ]
 
 

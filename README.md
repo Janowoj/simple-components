@@ -1851,9 +1851,31 @@ return () => {
 
 1. understand how the table is supposed to work
 - sorting one column means that we are going to change the order of the rows
+
 - there is a cycle of 3 states, when the user clicks: ascending, descending, none
+
 - when the user clicks on e.g. score header one or two time and then clicks on the other header cell, we are going to immediately sort an ascending order on that other column
+
 2. review sorting in JS
+
+const data = [11,1,3,4];
+
+data.sort((a, b) => a - b);
+
+// means: if a < b, return a negative number, if a > b, return a positive number, if a === b, return 0
+// second argument of an array is a, first argument of an array is b
+
+
+data.sort((a, b) => {
+    if (a < b) {
+        return -1;
+    }
+    if (a > b) {
+        return 1;
+    }
+    return 0;
+});
+
 3. look at options for adding sort to the table
 4. remember, the Table component is supposed to be REUSABLE!
 

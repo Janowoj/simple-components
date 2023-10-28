@@ -1886,6 +1886,31 @@ data.sort();
 
 // returns: ['A', 'C', 'a', 'c', 's']
 
+#### localeCompare() is a built-in method on strings, which returns a negative number, a positive number or 0.
+
+const data = ['s', 'A', 'a', 'C', 'c'];
+
+data.sort((a,b) => {
+    return a.localeCompare(b);
+})
+
+// returns; ['a', 'A', 'c', 'C', 's'];
+// WE have to 'tell' the sort function how to sort the strings:
+
+// sorting arrays of objects:
+
+e.g.: 
+
+const data = [
+    {weight: 13, cost: 5, name: 'apple'},
+    {weight: 11, cost: 3, name: 'banana'},
+    {weight: 12, cost: 4, name: 'grape'},
+]
+
+- sorting based upon the name property (alphabetical order),
+- sorting based upon the cost property (ascending or descending order),
+- sorting based upon the weight property (ascending or descending order)
+
 3. look at options for adding sort to the table
 4. remember, the Table component is supposed to be REUSABLE!
 

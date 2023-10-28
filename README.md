@@ -1858,6 +1858,8 @@ return () => {
 
 2. review sorting in JS
 
+// sorting numbers:
+
 const data = [11,1,3,4];
 
 data.sort((a, b) => a - b);
@@ -1875,6 +1877,14 @@ data.sort((a, b) => {
     }
     return 0;
 });
+
+// sorting strings:
+
+const data = ['s', 'A', 'a', 'C', 'c'];
+
+data.sort();
+
+// returns: ['A', 'C', 'a', 'c', 's']
 
 3. look at options for adding sort to the table
 4. remember, the Table component is supposed to be REUSABLE!

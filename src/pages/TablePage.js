@@ -25,6 +25,7 @@ function TablePage() {
         {
             label: 'Score squared',
             render: (fruit) => fruit.score ** 2,
+            header: () => <th className='bg-red-500'>Score</th>
         }
     ]
 

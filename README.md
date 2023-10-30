@@ -1953,7 +1953,7 @@ data2.sort((a, b) => {
 
 // We might have some Table that probable shouldn't be sortable (e.g. Top 3 movies) and another Table that should be sortable (All movies). 
 
-// Table component what we want:
+// Table component with sorting functionality:
 
 - State to traack the sorting stuff,
 - Function to handle click on a Header,
@@ -1961,4 +1961,38 @@ data2.sort((a, b) => {
 - Sorting Logic,
 - Rendering Rows,
 - Assemble and return the Table,
+
+// This is not the best idea because of a lot of logic inside the Table component.
+
+#### Table Compontent Refactoring:
+
+// We want something other than a plain th element to be rendered inside of the header cell.
+
+// Object in Config:
+
+header: optional function to decide what to show here
+label: what to show in the header cell
+render: optional function to decide what to show inside the cell
+
+{
+            label: 'Score squared',
+            render: (fruit) => fruit.score ** 2,
+            header: () => <className='bg-red-500'>Score</th>
+        }
+
+// We can now customize the header cells.
+
+#### Warning missing key prop:
+
+// We don't want to add any props to the TablePage component, because we want it to be used by other developers:
+
+header: () => <th key='asdf' className='bg-red-500'>Score</th>
+
+// Another solution is to add a key prop to the div element:
+
+if (column.header) {
+            return <div key={column.label}>{column.header()}</div>;
+        }
+
+// Now there is another error! WE CANNOT DISPLAY DIV element INSIDE a TH element!
 

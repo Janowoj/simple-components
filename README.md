@@ -1996,3 +1996,36 @@ if (column.header) {
 
 // Now there is another error! WE CANNOT DISPLAY DIV element INSIDE a TH element!
 
+// Inside the Table component:
+
+function Echo({ children }) {
+    return children;
+}
+
+#### What does Echo component do?
+
+// It takes a prop called children and returns it.
+// We can asign a key prop to the Echo component, but it doesn't actually produce any HTML.
+
+#### Instead of Echo component we can use React.Fragment (built-in component):
+
+if (column.header) {
+            return <React.Fragment key={column.label}>{column.header()}</React.Fragment>;
+        }
+
+#### sortValue function:
+
+// optional function to describe how to extract the values for sorting when this column is clicked
+
+#### SortableTable component:
+
+// This component is going to modify some props that are going down to the Table component and add a click event handler to the header cells.
+
+- Look at each object in the config array,
+- does the object have a sortValue function?
+- if so, this column must be sortable
+- add a 'header' property that will store a clickable header cell
+- when user clicks this, sort the data and pass the sorted
+dData down to the table
+
+// It ADDS in some ADDITIONAL FUNCTIONALITY to the TABLE component.

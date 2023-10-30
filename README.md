@@ -1911,10 +1911,34 @@ const data = [
 - sorting based upon the cost property (ascending or descending order),
 - sorting based upon the weight property (ascending or descending order)
 
+or...
+- sorting based upon the cost per pound (cost divided by weight ratio)
+- sorting based on other properties (e.g. length of the 'name')
+
+// To do this we need some transformation step.
+
 3. look at options for adding sort to the table
 4. remember, the Table component is supposed to be REUSABLE!
 
+#### Reversing sort order:
 
+// We can easily swap our order by:
+MULTIPLYING THE RESULT BY -1.
 
+function getSortValue(vegetable) {
+    return vegetable.cost
+}
+
+data2.sort((a, b) => {
+    const valueA = getSortValue(a);
+    const valueB = getSortValue(b);
+    if (typeof valueA === 'string') {
+        return valueA.localeCompare(valueB);
+    } else {
+        return (valueA - valueB) * -1;
+    }
+});
+
+// This is not the best idea, because we need type * -1 each time we want to reverse the order.
 
 

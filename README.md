@@ -1941,4 +1941,24 @@ data2.sort((a, b) => {
 
 // This is not the best idea, because we need type * -1 each time we want to reverse the order.
 
+#### Code in Table Component:
+
+// current:
+
+- Rendering Header Cells,
+- Rendering Rows,
+- Assemble and return the Table,
+
+// in the future we want to have a reusable Table component.
+
+// We might have some Table that probable shouldn't be sortable (e.g. Top 3 movies) and another Table that should be sortable (All movies). 
+
+// Table component what we want:
+
+- State to traack the sorting stuff,
+- Function to handle click on a Header,
+- Rendering Header + sort direction icons,
+- Sorting Logic,
+- Rendering Rows,
+- Assemble and return the Table,
 

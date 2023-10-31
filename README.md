@@ -2029,3 +2029,32 @@ if (column.header) {
 dData down to the table
 
 // It ADDS in some ADDITIONAL FUNCTIONALITY to the TABLE component.
+
+#### Adding SortableTable component:
+
+1. Create SortableTable.js component. For now, take all props and pass them through to Table.
+2. Make sure TablePage shows SortableTable
+3. Add 'sortValue' functions to column config in TablePage. 
+Remove 'header' properties.
+4. SortableTable should find column objects with sortValue functions and add a header function to them.
+5. TH returned by the 'header' function should watch for click events.
+6. When the user clicks the TH, SortableTable should sort the data and pass the sorted data down to Table. sort data and pass the result to Table.
+
+#### State design for SortableTable:
+
+// option 1:
+
+// State is the sorted version of 'data'.
+// When user clicks a header, re-sort data, pass it into Table.
+
+// THIS IS NOT A GOOD IDEA.
+// We need to have something inside of our component that keeps track of what the current order is!
+// Also whenever the user clicks on these headers, we want to modify these little icons.
+
+// option 2:
+
+// We create two pieces of state:
+
+- one to keep track of the current order (null, 'asc', 'desc'),
+- second to keep track of which column is currently being sorted (null, 'Name', 'Score')
+

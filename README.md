@@ -2058,3 +2058,11 @@ Remove 'header' properties.
 - one to keep track of the current order (null, 'asc', 'desc'),
 - second to keep track of which column is currently being sorted (null, 'Name', 'Score')
 
+#### Icon sorting setup:
+
+// We need to add some icons to the header cells.
+
+// To keep the file clean, we are going to create a seperate function called getIcons(column.label, sortBy, sortOrder).
+
+// If those two first parameters right there are not equal, it means that we know wa want to show both icons (up and down), because we are not currently sorting by this column.
+

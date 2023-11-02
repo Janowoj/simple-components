@@ -2079,3 +2079,22 @@ Remove 'header' properties.
 // Same DATA prop, same sortOrder and sortBy states, but different UI.
 
 // How we can we extract the sorting logic and reuse it in different locations of our project? 
+
+// We can create a CUSTOM HOOK.
+
+##### Custom Hooks:
+
+// Functions that contain some reusable logic inside of them.
+
+// Custom hooks ussually reuse bulit-in hooks like useState, useEffect, useRef.
+
+// Usually easiest to extract logic into a hook, rather than making a hook first.
+
+##### Our plan:
+
+1. Make a tuny demo component with a tiny bit of logic inside of it.
+
+2. Learn a design process to extract that logic into a custom hook.
+
+3. Go back to SortableTAble and repeat the design process.
+

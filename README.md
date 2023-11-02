@@ -2151,3 +2151,19 @@ sortOrder state,
 sortBy state,
 handleClick function,
 sorting logic
+
+###### useReducer hook:
+
+// useReducer uses some pattern very often used in React applications, especially in the Redux library.
+
+// We can use useReducer hook to simplify the code.
+
+// To understand Redux we need to understand useReducer.
+
+###### Our plan with useReducer:
+
+// Refactor the simple CounterPage to use useState without any custom hooks.
+
+// Refactor the simple CounterPage to use useReducer.
+
+// useReducer is a different way of handling state inside of a component.

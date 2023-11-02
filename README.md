@@ -2066,3 +2066,8 @@ Remove 'header' properties.
 
 // If those two first parameters right there are not equal, it means that we know wa want to show both icons (up and down), because we are not currently sorting by this column.
 
+// If column.label === sortBy, it means that we are currently sorting by this column and we have to look at the sortOrder to decide which icon to show.
+
+#### Sorting order reset:
+
+// We are always going through that SAME cycle from UNSORTED to ASCENDING to DESCENDING to UNSORTED regardless of which header cell we are sorting by.

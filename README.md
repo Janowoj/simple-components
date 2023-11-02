@@ -2098,3 +2098,24 @@ Remove 'header' properties.
 
 3. Go back to SortableTAble and repeat the design process.
 
+##### CounterPage component:
+
+- counter state
+- useEffect to update document title
+- handleClick function to increment counter
+- JSX to show counter
+
+// In the first three parts of code we have some logic that we want to extract into a custom hook.
+
+##### Custom hooks strategy:
+
+1. Find code in a component related to a single piece of state.
+2. Copy and paste it into a helper function.
+3. Fix all the brokev references.
+4. HURRA! You have a CUSTOM HOOK!
+
+##### Custom hook implementation:
+
+// Take count, useEffect and handleClick function and put them into a function called useCounter.
+
+// We can use this hook in any component we want.

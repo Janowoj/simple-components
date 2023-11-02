@@ -2119,3 +2119,15 @@ Remove 'header' properties.
 // Take count, useEffect and handleClick function and put them into a function called useCounter.
 
 // We can use this hook in any component we want.
+
+##### Hook Creation:
+
+1. Make a function called 'useSomething'
+2. Find all the non-JSX expressions that refer to 1-2 related pieces of state
+3. Cut them all out, paste them into 'useSomething'
+4. Find 'not defined' errors in your component
+5. In the hook, return an object that contains the variables the component needs
+6. In the component, call your hook. Destructure the properties the component needs.
+7. Find 'not defined' errors in your hook. Pass the missing variables in as rguments to the hook.
+8. Rename the variables in the component to match the names in the hook.
+9. REname returned properties to something more descriptive.

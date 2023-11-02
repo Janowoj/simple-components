@@ -2131,3 +2131,23 @@ Remove 'header' properties.
 7. Find 'not defined' errors in your hook. Pass the missing variables in as rguments to the hook.
 8. Rename the variables in the component to match the names in the hook.
 9. REname returned properties to something more descriptive.
+
+##### SortableTable sections:
+
+sortOrder state,
+sortBy state,
+handleClick function,
+updatedConfig array,
+sorting logic,
+JSX
+
+##### SortableTable refactoring:
+
+// We can extract the sorting logic into a custom hook for sorting any kind of data, e.g. list.
+
+useSort:
+
+sortOrder state,
+sortBy state,
+handleClick function,
+sorting logic

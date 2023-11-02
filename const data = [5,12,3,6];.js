@@ -60,3 +60,6 @@ data2.sort((a, b) => {
     }
 });
 
+// if I want to sort by descending order we only need
+//  to change the sortOrder variable to 'desc'.
+

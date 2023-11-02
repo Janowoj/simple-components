@@ -2071,3 +2071,11 @@ Remove 'header' properties.
 #### Sorting order reset:
 
 // We are always going through that SAME cycle from UNSORTED to ASCENDING to DESCENDING to UNSORTED regardless of which header cell we are sorting by.
+
+// We would like to be able to click on the different header cell and sort on that column in ascending order.
+
+#### Different UI for presenting the data:
+
+// Same DATA prop, same sortOrder and sortBy states, but different UI.
+
+// How we can we extract the sorting logic and reuse it in different locations of our project? 

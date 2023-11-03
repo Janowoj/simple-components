@@ -2199,3 +2199,65 @@ Each piece of state defines as a SEPARETE VARIABLE.
 
 // If we want to figure out what a current state is, we can use simply console.log(state).
 
+##### State Updates with useReducer:
+
+// When You call DISPATCH, react is going to find that REDUCER function that e defined at the top of the file and passed as the first argument to useReducer.
+
+// The current STATE of component is a first argument to the reducer function. The STATE is always an object.
+
+// The second argument to the reducer function is the ACTION object (the name is a convention).
+
+- The value of the ACTION object is going to be whatever we pass into the DISPATCH function (no argument or one).
+
+- whatever we return from the reducer function is going to be the NEW STATE of the component.
+
+- then the component is going to rerender.
+
+##### Rules around Reducer Functions
+
+- Whatever you return from the reducer function is going to be the NEW STATE of the component.
+
+- If you return nothing, then your state will be undefined.
+
+- No async/await, no requests, no promises, no outside variables.
+
+##### Like almost anywhere else in React, don't directly modify the state object!
+
+// We can use the spread operator to copy the state object and then modify the copy.
+
+// BAD: 
+
+const reducer = (state, action) => {
+    state.count = state.count + 1;
+    return state;
+}
+
+// GOOD (overwriting the count property):
+
+const reducer = (state, action) => {
+    return {
+        ...state,
+        count: state.count + 1
+    }
+}
+// GOOD (overwriting the valueToAdd property):
+
+const reducer = (state, action) => {
+    return {
+        ...state,
+        count: state.valueToAdd + 1
+    }
+}
+
+// GOOD (complete reset the state object):
+
+const reducer = (state, action) => {
+    return {
+        count: 0,
+        valueToAdd: 0
+    }
+}
+
+
+
+

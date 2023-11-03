@@ -2167,3 +2167,35 @@ sorting logic
 // Refactor the simple CounterPage to use useReducer.
 
 // useReducer is a different way of handling state inside of a component.
+
+###### useState vs useReducer:
+
+// useState is absolutely fine hook to use whenever a component needs state.
+
+// useReducer:
+- is a different way of handling state inside of a component
+- produces the state
+- changing this state makes component rerender
+- useful when you have several different CLOSELY-RELATED pieces of state (e.g. valueToAdd and count)
+- useful when FUTURE state values depend on the current state (e.g. incrementing a counter)
+
+###### Conventions of useState and useReducer:
+
+// useState:
+count, setCount (state - number)
+valueToAdd, setValueToAdd (state - number)
+
+Each piece of state defines as a SEPARETE VARIABLE.
+
+// useReducer:
+
+{
+    count: 10,
+    valueToAdd: 20
+}
+(state - object)
+
+// All state for the whole component defined in a SINGLE OBJECT.
+
+// If we want to figure out what a current state is, we can use simply console.log(state).
+

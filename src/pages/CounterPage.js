@@ -4,11 +4,26 @@ import Button from '../components/Button';
 import Panel from '../components/Panel';
 
 const reducer = (state, action) => {
-    return {
-        ...state,
-        count: state.count + 1,
-    };
-}
+    // return {
+    //     ...state,
+    //     count: state.count + 1,
+    // };
+    if (action.type === 'increment') {
+        return {
+            ...state,
+            count: state.count + 1,
+        };
+    }
+
+    if (action.type === 'change-value-to-add') {
+        return {
+            ...state,
+            valueToAdd: action.payload,
+        }
+    }
+
+    return state;
+};
 
 function CounterPage({ initialCount }) {
 
@@ -22,7 +37,9 @@ function CounterPage({ initialCount }) {
 
     const increment = () => {
         // setCount(count + 1);
-        dispatch();
+        dispatch({
+            type: 'increment'
+        });
     };
     const decrement = () => {
         // setCount(count - 1);
@@ -31,15 +48,22 @@ function CounterPage({ initialCount }) {
 
         // if first argument is not a number, then return 0
         const value = parseInt(event.target.value) || 0;
-        // setValueToAdd(value);
+
+        dispatch({
+            type: 'change-value-to-add',
+            payload: value
+        });
     };
+    // setValueToAdd(value);
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
-        // setCount(count + valueToAdd)
-        // setValueToAdd(0);
     };
+
+    // setCount(count + valueToAdd)
+    // setValueToAdd(0);
+
     return (
         <Panel className='m-3'>
             <h1 className='text-lg'>Count {state.count} times</h1>

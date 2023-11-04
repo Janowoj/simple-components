@@ -2258,6 +2258,63 @@ const reducer = (state, action) => {
     }
 }
 
+###### useReducer problem:
 
+// When the reducer function runs, we are executing some code inside of it, but we DON'T KNOW WHAT STATE IS SUPPOSED TO BE UPDATED.
 
+// So we have to tell the reducer function what state is supposed to be updated.
+
+// SOLUTION:
+
+// When we call 'dispatch', we need to pass along some info to tell the reducer how the state should be updated.
+
+// Many ways to do this!
+
+// The React community has come up with a convention on how to tell the reducer what it needs to do:
+
+// Convention: ACTION OBJECT
+
+const increment = () => {
+    dispatch({
+        type: 'increment-count'
+    });
+};
+
+1. When we need to modify the state, we will call dispatch and always pass in an 'action' object.
+
+2. The 'action' object will always have a 'type' property that is a string.
+This helps tell the reducer what state update it needs to make.
+
+3. If we need to communicate some data to the reducer, it will be placed on the 'payload' property of the 'action' object.
+
+const handleChange = (event) => {
+    const value = event.target.value;
+
+    dispatch({
+        type: 'set-value-to-add',
+        payload: event.target.value
+    });
+};
+
+THIS IS A COMMON COMMUNITY CONVENTION, NOT A REQUIREMENT!
+
+// What is going to be in the reducer function?
+
+const reducer = (state, action) => {
+    if(action.type === 'increment-count') {
+        return {
+            ...state,
+            count: state.count + 1
+        };
+    }
+
+    if(action.type === 'change-value') {
+        return {
+            ...state,
+            valueToAdd: action.payload
+        };
+    }
+
+    return state;
+}
 

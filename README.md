@@ -2315,6 +2315,14 @@ const reducer = (state, action) => {
         };
     }
 
+##### Constant action types:
+
+// The string in the action object is called 'action type' and should be the same as the string in the reducer function (take care of typos).
+
+// We can use CONSTANT VARIABLES to avoid typos on the top of the file or in a separate file.
+
+// The community convention is to use all CAPITAL LETTERS for the constant variable.
+
     return state;
 }
 

@@ -2361,3 +2361,32 @@ const reducer = (state, action) => {
 // Less duplicated code if you need to dispatch the same action in multiple places
 
 // Part of the goal of reducers is to have a very specific set of ways that sstate can be charged 
+
+##### IMMER library:
+
+// Immer is a library that makes it easier to update state inside of a reducer function.
+
+// We can directly modify the state object inside of the reducer function.
+
+// Not all React projects that you work on are going to use Immer (we need to know how to update state without Immer).
+
+// using Immer:
+
+1. You can mutate the state directly,
+2. Do not have to return a new value,
+3. Still return in each case, otherwise you get 'fall-through' errors
+
+e.g.:
+const reducer = (state, action) => {
+    switch (action.type) {
+        case INCREMENT_COUNT:
+            state.count++;
+            return;
+        case SET_VALUE_TO_ADD:
+            state.valueToAdd = action.payload;
+            return;
+        default:
+            return state;
+    }
+};
+

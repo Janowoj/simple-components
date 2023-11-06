@@ -2321,7 +2321,30 @@ const reducer = (state, action) => {
 
 // We can use CONSTANT VARIABLES to avoid typos on the top of the file or in a separate file.
 
-// The community convention is to use all CAPITAL LETTERS for the constant variable.
+// The community convention is to use all CAPITAL LETTERS for the constant variable (just for another developer to know that this is a constant variable).
+
+##### Refactioring to a switch statement:
+
+// This is very common in Redux applications.
+
+const reducer = (state, action) => {
+    switch (action.type) {
+        case INCREMENT_COUNT:
+            return {
+                ...state,
+                count: state.count + 1,
+            };
+        case SET_VALUE_TO_ADD:
+            return {
+                ...state,
+                valueToAdd: action.payload,
+            }
+        default:
+            return state;
+        // throw new Error(`Unknown action type: ${action.type}`);
+
+    }
+};
 
     return state;
 }

@@ -2349,3 +2349,8 @@ const reducer = (state, action) => {
     return state;
 }
 
+##### Updating the state using switch statement:
+
+1. Add a new constant action type string,
+2. Add a call to 'dispatch' with the new action type,
+3. Add a new case statement in your reducer function,

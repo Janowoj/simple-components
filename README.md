@@ -2390,3 +2390,58 @@ const reducer = (state, action) => {
     }
 };
 
+# React-Redux introduction:
+
+// React-Redux is a library that helps us to manage state inside of our application. It is very similar to the useReducer hook.
+
+// similarites:
+
+// With Redux we still have action objects, dispatch function and reducer function and we still creating a state object, that is going to be used by our application.
+
+// differences:
+
+1. With useReducer all of our state was created and maintained in the React world.
+
+// With Redux we create a separate state object called the REDUX STORE, that is maintained by Redux.
+
+// To create connection between React and Redux we use a library called React-Redux Provider.
+
+// This is how the Redux data is being shared with React side of our application: it is using CONTEXT under the hood.
+
+2. With useReducer we make noe single reducer function that handles all of our state updates.
+
+// In the world of Redux we make many different reducer functions, each of which is responsible for updating a single piece of state.
+
+// Each different reducer function is going to be in charge of magaging a single piece of state, e.g. 
+reducer to manage a list of users, 
+reducer to manage a list of videos, 
+reducer to manage a list of images.
+
+// If we have one reducer function it is a sign, that our application might not be at the size that we need to have Redux.
+
+3. State objects are a little bit more complicated in Redux.
+e.g.:
+
+{
+    users: {
+        currentUser: {
+            id: 1,
+            name: 'Sam',
+            age: 30
+        }
+    },
+    videos: {
+            playlist: [
+                {
+                    title: 'Surfing in Hawaii',
+                }
+            ]
+        },
+    messages: {
+            unread: [
+                {constent: "Msg me"}
+            ]
+        }
+    }
+
+// We do this to split up the responsibility of managing state inside of our application.

@@ -2445,3 +2445,34 @@ e.g.:
     }
 
 // We do this to split up the responsibility of managing state inside of our application.
+
+# Redux vs Redux-Toolkit:
+
+// Redux-Toolkit is a library that makes it easier to work with Redux.
+
+// The main reason to use Redux boils down to dispatch function.
+
+// If we want to change state in any way we must call dispatch function! (there some advantages and disadvantages of this).
+
+// It turns out that KEEPING TRACK of all these updates we need to make in the large application is very DIFFICULT and confusing.
+
+// ADVANTAGES OF REDUX:
+
+// The central point of changing the state is THE DISPATCH FUNCTION. This makes it easier to engineers to understand how the state is being changed.
+
+// Having DISPATCH FUNCTION it becomes easy to add in additional debugging tools.
+
+// DOWNSIDES OF REDUX:
+
+// We need to write many extra code inside the reducer functions (a lot of BOILEPLATE CODE).
+
+...SO...
+
+// Redux-Toolkit is a library that makes it easier to work with Redux (RTK).
+
+// This is a wrapper around Redux.
+
+1. It creates our different action types of reducer functions for us. Techincally we are still making use of Redux.
+
+2. Making use of Redux-Toolkit is a recommended way of creating Redux projects in the future.
+

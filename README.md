@@ -2354,3 +2354,10 @@ const reducer = (state, action) => {
 1. Add a new constant action type string,
 2. Add a call to 'dispatch' with the new action type,
 3. Add a new case statement in your reducer function,
+
+##### Practiocal tips for useReducer:
+// Usually makes more sense to stuff logic into the reducer and keep the dispatch calls simple
+
+// Less duplicated code if you need to dispatch the same action in multiple places
+
+// Part of the goal of reducers is to have a very specific set of ways that sstate can be charged 

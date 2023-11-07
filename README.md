@@ -2476,3 +2476,44 @@ e.g.:
 
 2. Making use of Redux-Toolkit is a recommended way of creating Redux projects in the future.
 
+# Redux Store:
+
+// Redux store is a single object that contains all of the state data for our application.
+
+e.g.:
+
+{
+    movies: ['Interstellar', 'Inception'],
+    songs: ['Hello', 'Someone like you'],
+}
+
+// Each of these different arrays is going to be managed by a separate reducer function that we create.
+
+// Whenever we want to add a song, remove a song, add a movie, remove a movie, we are going to dispatch an action object from the handler function into our reducer functions. 
+
+// This way we will change the state inside of the Redux store.
+
+# Redux-Toolkit implementation:
+
+import { configureStore, createSlice } from "@reduxjs/toolkit";
+
+const songsSlice = createSlice({
+  name: "song",
+  initialState: [],
+  reducers: {
+    addSong(state, action) {
+      state.push(action.payload);
+    },
+    removeSong(state, action) {
+      //
+    }
+  }
+});
+
+const store = configureStore({
+  reducer: {
+    songs: songsSlice.reducer
+  }
+});
+
+console.log(store);

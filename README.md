@@ -2478,7 +2478,19 @@ e.g.:
 
 # Redux Store:
 
-// Redux store is a single object that contains all of the state data for our application.
+1. Redux store is a single object that contains all of the state data for our application.
+
+// Usually n application has a single Redux store.
+
+// We usually do not have to interact with it directly ( the React-Redux library is going to do that for us).
+
+// Whenever we want to interact with the store maually (for debugging purposes and whatnot ), there are two common things we will do:
+
+1. We often manually dispatch actions to the store by calling store.dispatch({type: 'songs/addSongs'}).  
+
+2. Sometimes we might want to see what state exists inside the store by calling store.getState().
+
+// Both of these are not very common, we rather use React-Redux library.
 
 e.g.:
 
@@ -2487,11 +2499,11 @@ e.g.:
     songs: ['Hello', 'Someone like you'],
 }
 
-// Each of these different arrays is going to be managed by a separate reducer function that we create.
+2. Each of these different arrays is going to be managed by a separate reducer function that we create.
 
-// Whenever we want to add a song, remove a song, add a movie, remove a movie, we are going to dispatch an action object from the handler function into our reducer functions. 
+3. Whenever we want to add a song, remove a song, add a movie, remove a movie, we are going to dispatch an action object from the handler function into our reducer functions. 
 
-// This way we will change the state inside of the Redux store.
+4. This way we will change the state inside of the Redux store.
 
 # Redux-Toolkit implementation:
 
@@ -2517,3 +2529,30 @@ const store = configureStore({
 });
 
 console.log(store);
+
+const startingState = store.getState();
+console.log(JSON.stringify(startingState));
+
+store.dispatch({
+  type: "song/addSong",
+  payload: "New Song!!!"
+});
+
+const finalState = store.getState();
+console.log(JSON.stringify(finalState));
+
+// in the console we can see the state of the store before and after dispatching the action:
+
+{"songs":[]} 
+{"songs":["New Song!!!"]} 
+
+# State in Redux:
+
+{
+    currentUser: [{id: 1}],
+    videos: {viewedIds: [4,6,1]},
+    messages: {unreadCount: 90},
+    notifications: {urgent: 'Read This!'}
+}
+
+1. Keys for this big object are set when the store is created.

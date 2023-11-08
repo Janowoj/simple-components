@@ -2556,3 +2556,63 @@ console.log(JSON.stringify(finalState));
 }
 
 1. Keys for this big object are set when the store is created.
+2. Values for these keys are set by the reducer functions.
+3. Keys stay the same, but values change over time as our state changes.
+4. Rememeber, it is usually nice to store all state in a single big object.
+
+# Reducers in our Redux store:
+
+{
+    songs: []
+}  
+
+// This state is produced by songs 
+reducer function to maintain that array.
+
+// The key (name) is created when we create the store.
+
+const store = configureStore({
+  reducer: {
+    songs: songsSlice.reducer
+  }
+});
+
+// Songs property means that the object is going to have a key of songs.
+
+# Slices in Redux:
+
+// A slice is a collection of reducer logic and actions 
+
+// Slice is not changing the underlying state updating flow, it is just a way of organizing the code.
+
+// Slice:
+
+1. Defines some initial state
+2. Combines 'mini' reducer functions into a single, big  reducer function
+
+// useReducer:
+// to call ONE single DISPATCH we need to reducer, switch statement and constant action types (a lot of boilerplate code).
+
+// Redux-Toolkit:
+// Slices are what save us from having to write out all this boilerplate code.
+
+// Whenever we define a SLICE, we write out a set of MINI-REDUCER FUNCTIONS on that REDUCER PROPERTY.
+
+// Each function in reducer object is like an individual case statement in a switch statement. 
+
+// REDUCER PROPERTY is like MEGA-REDUCER FUNCTION. 
+
+// It combines all of these mini reducer functions into a single, big reducer function. This combined reducer is what actually gets loaded into the Redux store.
+
+// One of the proprty on the slice object is called 'reducer' (not reducers). This is a single function that is going to be called whenever we dispatch an action to the store.
+
+// Inside of each different reducer function we can modify the state object in any way we want.
+
+// We can use the 'immer' library to directly modify the state object.
+
+// How do we know which reducer function to call?
+We use PATTERNS to figure out which reducer function to call:
+
+1. Slice is going to take the NAME of the SLICE (e.g. 'song'), ADD a SLASH and then ADD the NAME of the REDUCER FUNCTION (e.g. 'addSong').
+
+3. Creates a set of action creators and action types that correspond to the reducers and state

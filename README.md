@@ -2587,8 +2587,8 @@ const store = configureStore({
 
 // Slice:
 
-1. Defines some initial state
-2. Combines 'mini' reducer functions into a single, big  reducer function
+I. Defines some initial state
+II. Combines 'mini' reducer functions into a single, big  reducer function
 
 // useReducer:
 // to call ONE single DISPATCH we need to reducer, switch statement and constant action types (a lot of boilerplate code).
@@ -2614,5 +2614,83 @@ const store = configureStore({
 We use PATTERNS to figure out which reducer function to call:
 
 1. Slice is going to take the NAME of the SLICE (e.g. 'song'), ADD a SLASH and then ADD the NAME of the REDUCER FUNCTION (e.g. 'addSong').
+ 
+We will end up with a string that looks like this: 'song/addSong'.
 
-3. Creates a set of action creators and action types that correspond to the reducers and state
+2. If there ise an action dispatched with this type, then the songSlice (big reducer function) is going to call the addSong reducer function.
+
+// That state argument inside addSong reducer function is only the piece of state that is being managed by the songSlice reducer function.
+
+// STATE IS NOT THE BIG STATE OBJECT IN THE STORE, IT IS
+// THE PIECE OF STATE MANAGED BY THIS REDUCER
+
+III. Creates a set of action creators and action types that correspond to the reducers and state
+
+// Tools that are going to help us create these action types automatically and keep us from having to memorize this pattern are called 'ACTION CREATORS'.
+
+ACTION CREATORS:
+
+// Set of functions created for us automatically by the slice.
+
+// When called they return an action that we can dispatch to the store.
+
+// Seve use from having to manually create action objects.
+
+# Connecting React and Redux:
+
+// We need to use the React-Redux library to connect React and Redux.
+
+// The KEY PART of React-Redux is the Provider component.
+
+1. When we create this Provider, we pass in our Redux store as a prop to it.
+
+2. Then through the Context system, the store and specifically the dispatch function and the state within it are going to be made available to all of the different components inside of our application.
+
+3. We don't have to mwke directly use of the context system, instead we are going to use some different HOOKS
+to access dispatch and our state.
+
+# Connecting React and Redux implementation:
+
+1. Export the 'store' from whatever file we create it in.
+2. Import the store to the index.js file.
+3. Import the Provider component from React-Redux library.
+4. Wrap the App component with the Provider component and pass in the store as a prop.
+
+# Changing the state in Redux:
+
+1. Add a reducer to one of your slices that changes state in some particular way.
+
+reducers: {
+    addSong(state, action) {
+        state.push(action.payload);
+        },
+    }
+2. Export the action creator that the slice automatically creates for you.
+
+export const { addSong } = songsSlice.actions;
+
+3. Find the component that you want to dispatch from.
+
+const handleSongAdd = (song) => {
+    console.log(song);
+}
+
+4. Import the action creator function and useDispatch hook from React-Redux.
+
+import { useDispatch } from "react-redux";
+import { createRandomSong } from "../data";
+import { addSong } from "../store";
+
+
+5. Call the 'useDispatch' hook to get access to the dispatch function.
+
+function SongPlaylist() {
+  const dispatch = useDispatch();
+}
+
+6. When the user does something, call the action creator to get an action, then dispatch it.
+
+const handleSongAdd = (song) => {
+    const action = addSong(song);
+    console.log(action);
+}

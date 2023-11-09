@@ -2694,3 +2694,29 @@ const handleSongAdd = (song) => {
     const action = addSong(song);
     console.log(action);
 }
+
+# Accessing state in Redux (many times per project):
+
+1. Find the component that needs to access state.
+
+import {useDispatch, useSelector} from 'react-redux';
+
+2. Import the 'useSelector' hook from React-Redux.
+
+function SongPlaylist() {
+    const dispatch = useDispatch();
+    const songPlayList = useSelector((state) => state.songs);
+}
+
+3. Call the hook, passing in a selector function
+
+// Confusing thing is:
+
+// Reducers in a slice only'see' their own part of the overall state object.
+
+...so...
+
+// In a reducer function, the 'state' argument is only the piece of state that is being managed by that reducer.
+// Everywhere else, 'state' means the whole state object.
+
+4. Use the state! Anytime the state changes, the component will automatically rerender.

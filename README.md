@@ -2664,10 +2664,15 @@ reducers: {
     addSong(state, action) {
         state.push(action.payload);
         },
+    removeSong(state, action) {
+      // action.payload === string, the song we want to remove
+      const index = state.indexOf(action.payload);
+      state.splice(index, 1);
+        }
     }
 2. Export the action creator that the slice automatically creates for you.
 
-export const { addSong } = songsSlice.actions;
+export const { addSong, removeSong } = songsSlice.actions;
 
 3. Find the component that you want to dispatch from.
 

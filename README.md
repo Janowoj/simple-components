@@ -2684,7 +2684,7 @@ const handleSongAdd = (song) => {
 
 import { useDispatch } from "react-redux";
 import { createRandomSong } from "../data";
-import { addSong } from "../store";
+import { addSong, removeSong } from "../store";
 
 
 5. Call the 'useDispatch' hook to get access to the dispatch function.
@@ -2725,3 +2725,36 @@ function SongPlaylist() {
 // Everywhere else, 'state' means the whole state object.
 
 4. Use the state! Anytime the state changes, the component will automatically rerender.
+
+# Resettting the state in Redux:
+
+// What to do when we are trying to update two different pieces of state at the same time (e.g. managed by songSlice and movieSlice)?
+
+// First we want to clean out the list of movies.
+
+// IMMER UNDERSTANDS THIS:
+
+reset(state, action) {
+      state.playlist =  [];
+    }
+
+// DON'T DO THIS:
+
+reset(state, action) {
+      state = [];
+    }
+
+// This is not going to work, because we are not actually modifying the state object (IMMER doesn't know that we are trying to modify the state object).
+
+// DO THIS:
+
+reset(state, action) {
+      return [];
+    }
+
+export const { addMovie, removeMovie, reset } = moviesSlice.actions;
+
+// In the App component:
+
+import { useDispatch } from "react-redux";
+import { reset } from "./store";

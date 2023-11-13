@@ -2758,3 +2758,37 @@ export const { addMovie, removeMovie, reset } = moviesSlice.actions;
 
 import { useDispatch } from "react-redux";
 import { reset } from "./store";
+
+# Multiple state updates in Redux:
+
+// We have four different ways to make sure that with ONE SINGLE CLICK we can update MULTIPLE PIECES OF STATE.
+
+1. Have the movieSlice's 'reset' function update the list of songs. (this CAN'T BE DONE,because the reset function only has access to the movieSlice's piece of state).
+
+reset(state, action) {
+      state.songs = [];
+      return [];
+    }
+
+2. Dispatch to separate actions (OK, but we have to dispatch actions to many times).
+
+const songsSlice = createSlice({
+  name: "song",
+  initialState: [],
+  reducers: {
+    addSong(state, action) {
+      state.push(action.payload);
+    },
+    removeSong(state, action) {
+      // action.payload === string, the song we want to remove
+      const index = state.indexOf(action.payload);
+      state.splice(index, 1);
+    },
+    resetSong (state, action) {
+      return [];
+    }
+  }
+});
+
+3. Get the songsSlice to watch for the 'reset' action.
+4. Create a new, standalone reset action and get both slices to watch for it.

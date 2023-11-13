@@ -2804,6 +2804,42 @@ const songsSlice = createSlice({
 // ... we receive in the console: 
 {type: "movies/reset", payload: undefined}
 
-// Whenever the slice is created by Redux Toolkit, extraReducer property is going to be called automatically.
+// Whenever the slice is created by Redux Toolkit, extraReducers property is going to be called automatically and the builder object is going to be passed in.
+
+const songsSlice = createSlice({
+  name: "song",
+  initialState: [],
+  reducers: {
+    addSong(state, action) {
+      state.push(action.payload);
+    },
+    removeSong(state, action) {
+      // action.payload === string, the song we want to remove
+      const index = state.indexOf(action.payload);
+      state.splice(index, 1);
+    }
+  },
+  extraReducers(builder) {
+    builder.addCase("movie/reset", (state, action) => {
+      return [];
+    });
+  }
+});
+
+// It is a good practice not to use string in the addCase method, but to use the action creator function (to avoid typos).
+
+// When typing:
+console.log(moviesSlice.actions.reset.toString());
+
+... we receive in the console:
+"movies/reset"
+
+.. so we can use it in the addCase method:
+
+extraReducers(builder) {
+    builder.addCase(moviesSlice.actions.reset.toString(), (state, action) => {
+      return [];
+    });
+  }
 
 4. Create a new, standalone reset action and get both slices to watch for it.

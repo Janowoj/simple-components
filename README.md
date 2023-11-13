@@ -2861,8 +2861,57 @@ Get both the Combined Songs Reducer and the Combined Movies Reducer to watch for
 - import {createAction} from '@reduxjs/toolkit',
 - const reset = createAction('app/reset'),
 - add to both slices: 
+
 extraReducers(builder) {
     builder.addCase(reset, (state, action) => {
       return [];
     });
   }
+
+  # File and Folder Structure:
+
+// organize by 'function':
+
+- components/
+- store/
+    - slices/
+    - index.js
+    - actions
+        - actions.js
+  - reducers.js
+- App.js
+- index.js 
+
+// oranize by 'feature':
+
+- src/
+    - movies/
+        - MovieList.js
+        - moviesSlice.js
+    - songs/
+        - SongList.js
+        - songsSlice.js
+    - store/
+        - index.js
+        - actions.js
+        - reducers.js
+    - App.js
+    - index.js
+
+// Redux docs reccoment to organize by 'feature'.
+
+// Redux Toolkit docs don't  make a direct recommendation.
+
+// 'Feature' approach frequently does not work well with Redux Toolkit (CIRCULAR IMPORTS).
+
+// 'Function' approach is more common with Redux Toolkit.
+
+// Allowing components to import from slice files gets really messy.
+
+... so 
+
+// Inside index.js file we can create and export Redux store, which we then will use inside the ROOT index.js inside the src folder.
+
+// In addition to making the store and exportinh it, the index.js file is also going to import Action Creator functions and immediately RE-EXPORT them.
+
+

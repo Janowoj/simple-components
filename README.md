@@ -2837,9 +2837,32 @@ console.log(moviesSlice.actions.reset.toString());
 .. so we can use it in the addCase method:
 
 extraReducers(builder) {
-    builder.addCase(moviesSlice.actions.reset.toString(), (state, action) => {
+    builder.addCase(moviesSlice.actions.reset, (state, action) => {
       return [];
     });
   }
 
-4. Create a new, standalone reset action and get both slices to watch for it.
+// we don't have to use toString() method, because the addCase method is going to convert the action creator function to a string automatically.
+
+4. Create a new, standalone reset action and get both slices to watch for it (the BEST SOLUTION).
+
+// Solution 3 is not ideal because if we will change something in the moviesSlice (e.g. rename a reducer or reset) all of the sudden our songSlice is going to BREAK.
+
+// goal:
+
+Get both the Combined Songs Reducer and the Combined Movies Reducer to watch for an action of 'app/reset'.
+
+// steps:
+
+- delete the reset function from the moviesSlice (reducer),
+- remove the builder.addCase method from the moviesSlice,
+- remove the reset from the export statement,
+
+- import {createAction} from '@reduxjs/toolkit',
+- const reset = createAction('app/reset'),
+- add to both slices: 
+extraReducers(builder) {
+    builder.addCase(reset, (state, action) => {
+      return [];
+    });
+  }

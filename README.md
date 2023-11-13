@@ -2791,4 +2791,19 @@ const songsSlice = createSlice({
 });
 
 3. Get the songsSlice to watch for the 'reset' action.
+
+// Whenever we call dispatch and we dispatch an action, that action object is sent to every reducer in the store, every Combined Reducer Function (not mini reducer functions).
+
+// To check what is dispatched when the click on the reset button:
+
+ resetMovie(state, action) {
+      console.log(action);
+      return [];
+    }
+
+// ... we receive in the console: 
+{type: "movies/reset", payload: undefined}
+
+// Whenever the slice is created by Redux Toolkit, extraReducer property is going to be called automatically.
+
 4. Create a new, standalone reset action and get both slices to watch for it.

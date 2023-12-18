@@ -25,6 +25,7 @@ function Dropdown({ options, value, onChange }) {
 
     const handleClick = () => {
         // setIsOpen((currentIsOpen) => !currentIsOpen); // practically it is impossible to click on this item faster than the rendering time
+        // Functional State Updates
         setIsOpen(!isOpen);
     }
 
@@ -40,7 +41,10 @@ function Dropdown({ options, value, onChange }) {
 
     const renderedOptions = options.map((option) => {
         return (
-            <div className="hover:bg-sky-100 rounded cursor-pointer p-1" onClick={() => handleOptionClick(option)} key={option.value}>
+            <div 
+            className="hover:bg-sky-100 rounded cursor-pointer p-1" 
+            onClick={() => handleOptionClick(option)} 
+            key={option.value}>
                 {option.label}
             </div>
         )

@@ -50,6 +50,9 @@ function Dropdown({ options, value, onChange }) {
         )
     });
 
+    // value?.label means value is defined of not or it is null or not. If it is defined or not null then we will use the label property of it
+    // if it is undefined then we will not get an error
+    // this is call Existence check helper
     return (
         <div ref={divElement} className="w-48 relative">
             <Panel
